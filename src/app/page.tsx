@@ -10,9 +10,10 @@ import {
   Brain,
   LineChart,
   Shield,
-  Scale,
   Award,
   ExternalLink,
+  UserCheck,
+  FileText,
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
 import landing from "../../public/landing.jpg";
@@ -40,51 +41,50 @@ export default function Home() {
   const services = [
     {
       id: "reclutamiento",
-      title: "Reclutamiento y Selección",
-      description:
-        "Identificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
+      title: "Reclutamiento y selección de personal",
+      description: "Identificamos, atraemos y contratamos a los candidatos ideales para los puestos de trabajo.",
       icon: <Users className="h-10 w-10" />,
     },
     {
+      id: "onboarding",
+      title: "Onboarding y acompañamiento",
+      description: "Implementamos un proceso de integración para los nuevos empleados, detectamos posibles dificultades y brindamos seguimiento en sus primeras etapas.",
+      icon: <UserCheck className="h-10 w-10" />,
+    },
+    {
       id: "talento",
-      title: "Gestión del Talento",
-      description:
-        "Desarrollamos programas de formación y planes de carrera para potenciar habilidades.",
+      title: "Gestión del talento y capacitación",
+      description: "Desarrollamos programas de formación y planes de carrera para mejorar las habilidades de los empleados.",
       icon: <Brain className="h-10 w-10" />,
     },
     {
       id: "nomina",
-      title: "Administración de Nómina",
-      description:
-        "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
+      title: "Administración de nómina y beneficios",
+      description: "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
       icon: <LineChart className="h-10 w-10" />,
     },
     {
       id: "clima-laboral",
-      title: "Gestión del Clima Laboral",
-      description:
-        "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
+      title: "Gestión del clima laboral",
+      description: "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
       icon: <Shield className="h-10 w-10" />,
     },
     {
-      id: "legal",
-      title: "Asesoría Legal",
-      description:
-        "Aseguramos que tu empresa cumpla con las leyes laborales y normativas de seguridad.",
-      icon: <Scale className="h-10 w-10" />,
-    },
-    {
       id: "desempeno",
-      title: "Evaluación del Desempeño",
-      description:
-        "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
+      title: "Evaluación del desempeño",
+      description: "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
       icon: <Award className="h-10 w-10" />,
     },
     {
       id: "outsourcing",
-      title: "Outsourcing",
-      description:
-        "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
+      title: "Encuestas de salida y análisis de rotación",
+      description: "Automatizamos y analizamos encuestas para comprender los motivos por los que los empleados dejan la organización.",
+      icon: <FileText className="h-10 w-10" />,
+    },
+    {
+      id: "outsourcing",
+      title: "Externalización de servicios (Outsourcing)",
+      description: "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
       icon: <ExternalLink className="h-10 w-10" />,
     },
   ];
@@ -194,13 +194,13 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-[#3c1d0c]">
               Prepara tu empresa para el futuro
             </h2>
-            <p className="text-xl text-[#79451a] max-w-[800px]">
+            <p className="text-xl text-white/80 max-w-[800px]">
               Descubre cómo nuestras soluciones pueden transformar tu
               departamento de RRHH
             </p>
             <Button
               asChild
-              className="mt-6 bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white"
+              className="mt-6 bg-[#84431c] hover:bg-[#6d381a]/90 text-white"
             >
               <Link href="/contacto">Agenda una consulta gratuita</Link>
             </Button>

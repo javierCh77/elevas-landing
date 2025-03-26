@@ -69,7 +69,7 @@ export default function ServiciosPage() {
   ]
 
   return (
-    <div className="container px-4 py-12 md:px-6 md:py-20">
+    <div className="px-4 py-12 md:px-6 md:py-20">
       <div className="mx-auto max-w-[800px] text-center mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-[#6d381a]">
           Nuestros Servicios

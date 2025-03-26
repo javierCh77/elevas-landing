@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Users, Brain, LineChart, Shield, Scale, Award, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { ArrowLeft } from "lucide-react";
+import { IoBulb, IoCash, IoClipboard, IoExit, IoHappy, IoPeople, IoStatsChart } from 'react-icons/io5';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -34,11 +35,11 @@ export async function generateStaticParams() {
 const services = [
   {
     id: "reclutamiento",
-    title: "Reclutamiento y Selección",
+    title: "Reclutamiento y Selección de Personal",
     description: "Identificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
-    icon: <Users className="h-12 w-12 text-[#e4b53b]" />,
+    icon: <IoPeople className="h-12 w-12 text-[#e4b53b]" />,
     longDescription: `
-      <p>Nuestro servicio de reclutamiento y selección está diseñado para encontrar el talento perfecto para tu organización. Utilizamos una combinación de métodos tradicionales y tecnología avanzada para identificar, evaluar y atraer a los mejores candidatos.</p>
+      <p>Nuestro servicio de reclutamiento y selección de personal está diseñado para encontrar el talento adecuado para tu empresa. Utilizamos una combinación de métodos tradicionales y tecnología avanzada para identificar, evaluar y atraer a los mejores candidatos.</p>
       
       <h3>Nuestro proceso incluye:</h3>
       <ul>
@@ -60,168 +61,152 @@ const services = [
     ],
   },
   {
-    id: "talento",
-    title: "Gestión del Talento",
-    description: "Desarrollamos programas de formación y planes de carrera para potenciar habilidades.",
-    icon: <Brain className="h-12 w-12 text-[#e4b53b]" />,
+    id: "onboarding",
+    title: "Onboarding y Acompañamiento",
+    description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
+    icon: <IoClipboard className="h-12 w-12 text-[#e4b53b]" />,
     longDescription: `
-      <p>Nuestro servicio de gestión del talento está diseñado para maximizar el potencial de tus empleados y prepararlos para los desafíos del futuro laboral. Creamos programas personalizados que combinan formación técnica, desarrollo de habilidades blandas y planificación de carrera.</p>
+      <p>El servicio de onboarding y acompañamiento está diseñado para que los nuevos empleados se integren de manera efectiva a tu empresa, comprendan su rol y se alineen con los valores y objetivos de la organización.</p>
       
-      <h3>Nuestras soluciones incluyen:</h3>
+      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Evaluación de competencias y brechas de habilidades</li>
-        <li>Diseño de programas de formación adaptados a las necesidades específicas</li>
-        <li>Implementación de planes de sucesión y desarrollo de liderazgo</li>
-        <li>Mentoring y coaching para potenciar el rendimiento</li>
-        <li>Plataformas de aprendizaje continuo y microlearning</li>
+        <li>Inducción sobre la cultura y valores organizacionales</li>
+        <li>Entrenamiento en herramientas y procesos internos</li>
+        <li>Asesoramiento continuo y acompañamiento personalizado</li>
+        <li>Encuestas de satisfacción para evaluar la integración</li>
       </ul>
       
-      <p>Utilizamos análisis predictivo para identificar las habilidades que serán necesarias en el futuro y preparamos a tu equipo para adaptarse a los cambios tecnológicos y organizacionales.</p>
+      <p>Con nuestro enfoque estructurado, aseguramos una transición más rápida y positiva para el nuevo colaborador, mejorando su rendimiento y compromiso.</p>
     `,
     benefits: [
-      "Mayor retención del talento clave",
-      "Aumento de la productividad y compromiso",
-      "Desarrollo de líderes internos",
-      "Adaptabilidad frente a cambios tecnológicos",
-      "Cultura de aprendizaje continuo",
+      "Reducción del tiempo de adaptación",
+      "Aumento en la satisfacción del nuevo empleado",
+      "Mejora en la retención de nuevos talentos",
+    ],
+  },
+  {
+    id: "talento",
+    title: "Gestión del Talento y Capacitación",
+    description: "Desarrollamos y optimizamos el potencial humano dentro de tu empresa.",
+    icon: <IoBulb className="h-12 w-12 text-[#e4b53b]" />,
+    longDescription: `
+      <p>Enfocamos nuestros esfuerzos en maximizar el rendimiento de tus empleados mediante programas personalizados de capacitación y desarrollo profesional.</p>
+      
+      <h3>Nuestro proceso incluye:</h3>
+      <ul>
+        <li>Evaluación de habilidades y competencias actuales</li>
+        <li>Diseño de programas de formación alineados con los objetivos empresariales</li>
+        <li>Seguimiento y medición del progreso de cada empleado</li>
+        <li>Capacitación continua en habilidades técnicas y blandas</li>
+      </ul>
+      
+      <p>Desarrollamos el talento de tu equipo y fomentamos una cultura de aprendizaje constante, mejorando tanto la productividad como la motivación.</p>
+    `,
+    benefits: [
+      "Mejora en la productividad y desempeño",
+      "Desarrollo de habilidades clave dentro de la empresa",
+      "Aumento de la retención de empleados",
     ],
   },
   {
     id: "nomina",
-    title: "Administración de Nómina",
-    description: "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
-    icon: <LineChart className="h-12 w-12 text-[#e4b53b]" />,
+    title: "Administración de Nómina y Beneficios",
+    description: "Gestionamos de manera eficiente los pagos y beneficios de tus empleados, asegurando el cumplimiento normativo.",
+    icon: <IoCash className="h-12 w-12 text-[#e4b53b]" />,
     longDescription: `
-      <p>Nuestro servicio de administración de nómina ofrece una gestión integral y automatizada de todos los aspectos relacionados con la compensación de tus empleados. Nos encargamos de procesar sueldos, bonificaciones, vacaciones y beneficios con precisión y puntualidad.</p>
+      <p>Nos encargamos de todo lo relacionado con la administración de nómina y beneficios, asegurando que los pagos a los empleados se realicen de forma correcta, puntual y conforme a la normativa vigente.</p>
       
-      <h3>Nuestro servicio incluye:</h3>
+      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Cálculo y procesamiento de nóminas mensuales, quincenales o semanales</li>
-        <li>Gestión de retenciones fiscales y contribuciones sociales</li>
-        <li>Administración de beneficios y compensaciones variables</li>
-        <li>Control de vacaciones, permisos y ausencias</li>
-        <li>Generación de reportes y análisis de costos laborales</li>
+        <li>Cálculo de salarios, bonificaciones y deducciones</li>
+        <li>Gestión de beneficios sociales y compensaciones</li>
+        <li>Asesoramiento sobre el cumplimiento de normativas laborales</li>
+        <li>Generación de informes detallados para la toma de decisiones</li>
       </ul>
       
-      <p>Implementamos sistemas automatizados que reducen errores, optimizan tiempos y garantizan el cumplimiento de todas las obligaciones legales relacionadas con la compensación de empleados.</p>
+      <p>Optimiza la administración de tu personal y asegura el cumplimiento de las obligaciones fiscales y laborales de manera eficiente y sin errores.</p>
     `,
     benefits: [
-      "Reducción de errores en el procesamiento de nóminas",
-      "Cumplimiento garantizado de obligaciones fiscales",
-      "Optimización de costos administrativos",
-      "Mayor transparencia en la gestión de compensaciones",
-      "Acceso a informes detallados para la toma de decisiones",
+      "Cumplimiento con las normativas fiscales y laborales",
+      "Mejora en la satisfacción de los empleados",
+      "Reducción de errores en el proceso de pago",
     ],
   },
   {
     id: "clima-laboral",
     title: "Gestión del Clima Laboral",
-    description: "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
-    icon: <Shield className="h-12 w-12 text-[#e4b53b]" />,
+    description: "Monitoreamos y mejoramos el ambiente de trabajo, promoviendo el bienestar y la productividad.",
+    icon: <IoHappy className="h-12 w-12 text-[#e4b53b]" />,
     longDescription: `
-      <p>Nuestro servicio de gestión del clima laboral está diseñado para crear y mantener un ambiente de trabajo positivo que fomente la productividad, el compromiso y el bienestar de los empleados. Implementamos estrategias para mejorar la comunicación, resolver conflictos y fortalecer la cultura organizacional.</p>
+      <p>Nos encargamos de medir y gestionar el clima laboral dentro de tu empresa para asegurar un entorno positivo y saludable que impulse el bienestar de los empleados.</p>
       
-      <h3>Nuestras soluciones incluyen:</h3>
+      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Diagnóstico del clima organizacional mediante encuestas y entrevistas</li>
-        <li>Diseño e implementación de planes de mejora específicos</li>
-        <li>Programas de reconocimiento y motivación</li>
-        <li>Gestión y resolución de conflictos internos</li>
-        <li>Estrategias de comunicación interna efectiva</li>
+        <li>Encuestas de clima laboral periódicas</li>
+        <li>Análisis de resultados y propuesta de acciones correctivas</li>
+        <li>Implementación de iniciativas para mejorar el bienestar</li>
+        <li>Fomento de la cultura de feedback y comunicación abierta</li>
       </ul>
       
-      <p>Utilizamos herramientas de análisis avanzado para monitorear continuamente el clima laboral y detectar áreas de oportunidad antes de que se conviertan en problemas mayores.</p>
+      <p>Mejoramos las relaciones laborales y creamos un ambiente que favorezca la productividad y satisfacción general de los empleados.</p>
     `,
     benefits: [
-      "Mayor compromiso y satisfacción de los empleados",
-      "Reducción del ausentismo y la rotación",
-      "Mejora en la colaboración entre equipos",
-      "Fortalecimiento de la cultura organizacional",
-      "Aumento de la productividad general",
-    ],
-  },
-  {
-    id: "legal",
-    title: "Asesoría Legal",
-    description: "Aseguramos que tu empresa cumpla con las leyes laborales y normativas de seguridad.",
-    icon: <Scale className="h-12 w-12 text-[#e4b53b]" />,
-    longDescription: `
-      <p>Nuestro servicio de asesoría legal laboral proporciona el soporte necesario para que tu empresa cumpla con todas las normativas y regulaciones en materia de empleo. Te ayudamos a navegar el complejo panorama legal y a implementar políticas que protejan tanto a la organización como a los empleados.</p>
-      
-      <h3>Nuestros servicios incluyen:</h3>
-      <ul>
-        <li>Revisión y elaboración de contratos laborales</li>
-        <li>Asesoramiento en procesos disciplinarios y despidos</li>
-        <li>Cumplimiento de normativas de seguridad y salud laboral</li>
-        <li>Gestión de relaciones con sindicatos y negociaciones colectivas</li>
-        <li>Actualización continua sobre cambios en la legislación laboral</li>
-      </ul>
-      
-      <p>Nuestro equipo de expertos legales te mantiene informado sobre los cambios normativos y te ayuda a implementar las medidas necesarias para evitar riesgos legales y sanciones.</p>
-    `,
-    benefits: [
-      "Minimización de riesgos legales y sanciones",
-      "Gestión adecuada de situaciones conflictivas",
-      "Contratos y políticas actualizados y conformes a la ley",
-      "Reducción de costos asociados a litigios laborales",
-      "Tranquilidad para concentrarte en tu negocio",
+      "Mejora en la satisfacción y motivación de los empleados",
+      "Reducción de conflictos laborales",
+      "Aumento en la productividad organizacional",
     ],
   },
   {
     id: "desempeno",
     title: "Evaluación del Desempeño",
-    description: "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
-    icon: <Award className="h-12 w-12 text-[#e4b53b]" />,
+    description: "Medimos el rendimiento de los empleados y proporcionamos retroalimentación para su mejora continua.",
+    icon: <IoStatsChart className="h-12 w-12 text-[#e4b53b]" />,
     longDescription: `
-      <p>Nuestro servicio de evaluación del desempeño está diseñado para medir, analizar y mejorar el rendimiento de tus empleados de manera objetiva y constructiva. Implementamos sistemas que combinan métricas cuantitativas con feedback cualitativo para obtener una visión completa del desempeño individual y colectivo.</p>
+      <p>La evaluación de desempeño es crucial para medir y mejorar el rendimiento de los empleados. Implementamos procesos transparentes y objetivos para proporcionar una retroalimentación constructiva.</p>
       
-      <h3>Nuestras soluciones incluyen:</h3>
+      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Diseño de sistemas de evaluación adaptados a tu organización</li>
-        <li>Definición de KPIs y objetivos SMART</li>
-        <li>Implementación de evaluaciones 360° y feedback continuo</li>
-        <li>Capacitación para líderes en evaluación y retroalimentación efectiva</li>
-        <li>Análisis de resultados y planes de desarrollo individualizados</li>
+        <li>Definición de KPIs claros y objetivos medibles</li>
+        <li>Evaluación 360 grados y retroalimentación de colegas y superiores</li>
+        <li>Planes de desarrollo basados en los resultados</li>
+        <li>Seguimiento continuo del desempeño individual y colectivo</li>
       </ul>
       
-      <p>Utilizamos tecnología avanzada para automatizar procesos y proporcionar insights valiosos que permiten tomar decisiones informadas sobre promociones, compensaciones y necesidades de formación.</p>
+      <p>Ayudamos a cada empleado a identificar áreas de mejora y maximizar su potencial, alineando sus esfuerzos con los objetivos de la empresa.</p>
     `,
     benefits: [
-      "Alineación de objetivos individuales con metas organizacionales",
-      "Identificación de talento de alto potencial",
-      "Mejora continua del rendimiento individual y de equipos",
-      "Decisiones objetivas sobre promociones y compensaciones",
-      "Cultura de feedback constructivo y desarrollo",
+      "Mejora continua del rendimiento de los empleados",
+      "Desarrollo de habilidades clave",
+      "Alineación con los objetivos de la empresa",
     ],
   },
   {
     id: "outsourcing",
-    title: "Outsourcing",
-    description: "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
-    icon: <ExternalLink className="h-12 w-12 text-[#e4b53b]" />,
+    title: "Encuestas de Salida y Análisis de Rotación",
+    description: "Evaluamos las razones por las que los empleados dejan la empresa para reducir la rotación.",
+    icon: <IoExit className="h-12 w-12 text-[#e4b53b]" />,
     longDescription: `
-      <p>Nuestro servicio de outsourcing de RRHH permite a tu empresa externalizar procesos completos o funciones específicas de recursos humanos. Esto te permite concentrarte en tu core business mientras nosotros nos encargamos de gestionar eficientemente el capital humano de tu organización.</p>
+      <p>Realizamos encuestas de salida a los empleados que dejan la organización para entender las razones detrás de su decisión. Estos datos nos permiten identificar áreas de mejora en la empresa y reducir la rotación.</p>
       
-      <h3>Nuestras soluciones incluyen:</h3>
+      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Outsourcing integral de la función de RRHH</li>
-        <li>Provisión de personal temporal para proyectos específicos</li>
-        <li>Gestión de procesos administrativos de personal</li>
-        <li>Externalización de la selección y contratación</li>
-        <li>Administración de programas de formación y desarrollo</li>
+        <li>Entrevistas de salida confidenciales</li>
+        <li>Análisis detallado de las causas de rotación</li>
+        <li>Recomendaciones para mejorar el entorno laboral y los procesos internos</li>
+        <li>Implementación de estrategias para retener el talento</li>
       </ul>
       
-      <p>Contamos con profesionales especializados en diferentes áreas de RRHH que se integran a tu operación, aportando experiencia y mejores prácticas mientras optimizas costos y recursos.</p>
+      <p>Te ayudamos a identificar patrones de rotación y mejorar las áreas que pueden estar afectando la retención de empleados clave.</p>
     `,
     benefits: [
-      "Reducción de costos operativos y administrativos",
-      "Acceso a expertise especializado sin contrataciones permanentes",
-      "Flexibilidad para adaptarse a cambios en la demanda",
-      "Procesos de RRHH más eficientes y profesionales",
-      "Mayor enfoque en actividades estratégicas del negocio",
+      "Reducción de la rotación de personal",
+      "Mejora en la retención de talento",
+      "Identificación de áreas críticas para la empresa",
     ],
   },
-]
+];
+
+
 
 export default async function ServicePage({ params }: Props) {
   const resolvedParams = await params; // Asegúrate de que params está resuelto
@@ -233,7 +218,7 @@ export default async function ServicePage({ params }: Props) {
 
 
   return (
-    <div className="container px-4 py-12 md:px-6 md:py-20">
+    <div className="px-4 py-12 md:px-6 md:py-20  ">
       <Link href="/servicios" className="inline-flex items-center text-[#6d381a] hover:text-[#e4b53b] mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" />
         Volver a servicios
