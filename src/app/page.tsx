@@ -119,7 +119,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-16 bg-[#e4b53b]">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <motion.div
             className="flex flex-col items-center text-center space-y-4"
             initial={{ opacity: 0, y: 20 }}
