@@ -85,7 +85,7 @@ export default function Footer() {
             </address>
           </div>
         </div>
-        <div className="mt-12 p-4 border-t border-white/20  text-white/60 text-sm bg-[#110b0846] flex items-center justify-center text-center">
+        <div className="mt-12 p-4 border-t border-white/20  text-white text-sm flex items-center justify-center text-center">
           <p>&copy; {new Date().getFullYear()} Consultoría Elevas. Todos los derechos reservados.</p>
         </div>
       </div>
