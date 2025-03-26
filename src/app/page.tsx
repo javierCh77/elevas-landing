@@ -88,75 +88,59 @@ export default function Home() {
         "Automatizamos y analizamos encuestas para comprender los motivos por los que los empleados dejan la organización.",
       icon: <FileText className="h-10 w-10" />,
     },
-    {
-      id: "outsourcing",
-      title: "Externalización de servicios (Outsourcing)",
-      description:
-        "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
-      icon: <ExternalLink className="h-10 w-10" />,
-    },
   ];
 
   return (
     <div className="flex flex-col ">
       {/* Hero Section */}
-      <section className="relative bg-[#f1df96]  py-6 md:py-12">
-        <div className="flex w-full    justify-evenly  px-6 md:px-12   ">
-          <motion.div
-            className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-[#6d381a] text-left leading-tight">
-                <span className="block text-5xl sm:text-6xl md:text-7xl text-[#e4b53b]">
-                  El futuro
-                </span>
-                <span className="block text-5xl sm:text-6xl md:text-7xl text-[#d98b5d]">
-                  del talento
-                </span>
-                <span className="block text-5xl sm:text-6xl md:text-7xl text-[#6d381a]">
-                  humano está aquí
-                </span>
-              </h1>
+      <section className="relative flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-20 px-6 md:px-12  overflow-hidden">
+        {/* Video de Fondo */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          Tu navegador no soporta videos.
+        </video>
 
-              <p className="max-w-[600px] text-lg text-[#6d381a]/80 md:text-xl">
-                Preparamos a tu empresa para enfrentar los desafíos de la
-                digitalización y la IA en la gestión del talento humano.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  asChild
-                  className="bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white"
-                >
-                  <Link href="/servicios">
-                    Nuestros Servicios <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-[#6d381a] text-[#6d381a]"
-                >
-                  <Link href="/contacto">Contáctanos</Link>
-                </Button>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={fadeIn}
-              className="flex justify-center lg:justify-end"
+        {/* Contenedor de Texto */}
+        <motion.div
+          className="relative max-w-2xl space-y-6 z-10 "
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-6xl font-bold  text-white drop-shadow-[0_4px_20px_#000000]  ">
+            <span className="block text-[#f8d273]  ">El futuro</span>
+            <span className="block text-[#eca77f] ">Del talento</span>
+            <span className="block text-white ">Humano está aquí</span>
+          </h1>
+          <p className="text-lg text-white/90 md:text-xl drop-shadow-md bg-black/25 rounded p-2">
+            Preparamos a tu empresa para enfrentar los desafíos de la
+            digitalización y la IA en la gestión del talento humano.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button
+              asChild
+              variant="outline"
+              className="bg-[#00000050] border-[#e4b53b] hover:bg-[#e4b53b]/40 text-white shadow-lg"
             >
-              <Image
-                src={landing}
-                width={900}
-                alt="Consultoría Elevas"
-                className="rounded-lg object-cover shadow-xl hover:shadow-2xl transition-shadow duration-500"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        </div>
+              <Link href="/servicios">
+                Nuestros Servicios <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="border-white text-white hover:bg-white/40 bg-[#00000050]"
+            >
+              <Link href="/contacto">Contáctanos</Link>
+            </Button>
+          </div>
+        </motion.div>
       </section>
 
       {/* Services Section */}

@@ -25,3 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   justify-content: center;
 }
+
+.clip-ellipse {
+  clip-path: ellipse(100% 80% at center top);
+}
