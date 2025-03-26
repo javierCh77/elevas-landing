@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight,
   Users,
@@ -11,22 +10,14 @@ import {
   LineChart,
   Shield,
   Award,
-  ExternalLink,
+
   UserCheck,
   FileText,
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
-import landing from "../../public/landing.jpg";
 
 export default function Home() {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
+  
 
   const staggerContainer = {
     hidden: { opacity: 0 },
