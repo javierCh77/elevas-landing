@@ -6,22 +6,23 @@ import Link from "next/link"
 import Image from "next/image"
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = services.find((s) => s.id === params.slug)
+  const resolvedParams = await params;
+  const service = services.find((s) => s.id === resolvedParams.slug);
 
   if (!service) {
     return {
       title: "Servicio no encontrado",
-    }
+    };
   }
 
   return {
     title: service.title,
     description: service.description,
-  }
+  };
 }
 
 export async function generateStaticParams() {
@@ -222,12 +223,14 @@ const services = [
   },
 ]
 
-export default function ServicePage({ params }: Props) {
-  const service = services.find((s) => s.id === params.slug)
+export default async function ServicePage({ params }: Props) {
+  const resolvedParams = await params; // Asegúrate de que params está resuelto
+  const service = services.find((s) => s.id === resolvedParams.slug);
 
   if (!service) {
-    notFound()
+    notFound();
   }
+
 
   return (
     <div className="container px-4 py-12 md:px-6 md:py-20">
