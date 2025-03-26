@@ -42,49 +42,57 @@ export default function Home() {
     {
       id: "reclutamiento",
       title: "Reclutamiento y selección de personal",
-      description: "Identificamos, atraemos y contratamos a los candidatos ideales para los puestos de trabajo.",
+      description:
+        "Identificamos, atraemos y contratamos a los candidatos ideales para los puestos de trabajo.",
       icon: <Users className="h-10 w-10" />,
     },
     {
       id: "onboarding",
       title: "Onboarding y acompañamiento",
-      description: "Implementamos un proceso de integración para los nuevos empleados, detectamos posibles dificultades y brindamos seguimiento en sus primeras etapas.",
+      description:
+        "Implementamos un proceso de integración para los nuevos empleados, detectamos posibles dificultades y brindamos seguimiento en sus primeras etapas.",
       icon: <UserCheck className="h-10 w-10" />,
     },
     {
       id: "talento",
       title: "Gestión del talento y capacitación",
-      description: "Desarrollamos programas de formación y planes de carrera para mejorar las habilidades de los empleados.",
+      description:
+        "Desarrollamos programas de formación y planes de carrera para mejorar las habilidades de los empleados.",
       icon: <Brain className="h-10 w-10" />,
     },
     {
       id: "nomina",
       title: "Administración de nómina y beneficios",
-      description: "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
+      description:
+        "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
       icon: <LineChart className="h-10 w-10" />,
     },
     {
       id: "clima-laboral",
       title: "Gestión del clima laboral",
-      description: "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
+      description:
+        "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
       icon: <Shield className="h-10 w-10" />,
     },
     {
       id: "desempeno",
       title: "Evaluación del desempeño",
-      description: "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
+      description:
+        "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
       icon: <Award className="h-10 w-10" />,
     },
     {
       id: "outsourcing",
       title: "Encuestas de salida y análisis de rotación",
-      description: "Automatizamos y analizamos encuestas para comprender los motivos por los que los empleados dejan la organización.",
+      description:
+        "Automatizamos y analizamos encuestas para comprender los motivos por los que los empleados dejan la organización.",
       icon: <FileText className="h-10 w-10" />,
     },
     {
       id: "outsourcing",
       title: "Externalización de servicios (Outsourcing)",
-      description: "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
+      description:
+        "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
       icon: <ExternalLink className="h-10 w-10" />,
     },
   ];
@@ -101,10 +109,18 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeIn} className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-[#6d381a]">
-                El futuro del <br/>Talento Humano <br />
-                Está aquí
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-[#6d381a] text-left leading-tight">
+                <span className="block text-5xl sm:text-6xl md:text-7xl text-[#e4b53b]">
+                  El futuro
+                </span>
+                <span className="block text-5xl sm:text-6xl md:text-7xl text-[#d98b5d]">
+                  del talento
+                </span>
+                <span className="block text-5xl sm:text-6xl md:text-7xl text-[#6d381a]">
+                  humano está aquí
+                </span>
               </h1>
+
               <p className="max-w-[600px] text-lg text-[#6d381a]/80 md:text-xl">
                 Preparamos a tu empresa para enfrentar los desafíos de la
                 digitalización y la IA en la gestión del talento humano.
