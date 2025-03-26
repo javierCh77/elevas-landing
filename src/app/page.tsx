@@ -102,8 +102,8 @@ export default function Home() {
           >
             <motion.div variants={fadeIn} className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-[#6d381a]">
-                El futuro del RRHH <br />
-                está aquí
+                El futuro del <br/>Talento Humano <br />
+                Está aquí
               </h1>
               <p className="max-w-[600px] text-lg text-[#6d381a]/80 md:text-xl">
                 Preparamos a tu empresa para enfrentar los desafíos de la
