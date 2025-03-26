@@ -172,7 +172,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-[#6d381a]">
               Nuestros Servicios
             </h2>
-            <p className="mt-4 text-lg text-[#6d381a]/70 max-w-[800px] mx-auto">
+            <p className="mt-4 text-lg text-[#6d381a]/80 max-w-[800px] mx-auto">
               Soluciones integrales de RRHH adaptadas a la era digital
             </p>
           </motion.div>
@@ -198,7 +198,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#f1df96]">
+      <section className="py-16 bg-[#d98b5d]">
         <div className="px-4 md:px-6">
           <motion.div
             className="flex flex-col items-center text-center space-y-4"
@@ -207,7 +207,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-[#3c1d0c]">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">
               Prepara tu empresa para el futuro
             </h2>
             <p className="text-xl text-white/80 max-w-[800px]">
@@ -216,7 +216,7 @@ export default function Home() {
             </p>
             <Button
               asChild
-              className="mt-6 bg-[#84431c] hover:bg-[#6d381a]/90 text-white"
+              className="mt-6 bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white shadow-xl"
             >
               <Link href="/contacto">Agenda una consulta gratuita</Link>
             </Button>

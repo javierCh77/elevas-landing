@@ -80,15 +80,16 @@ export default function Footer() {
             <address className="not-italic text-white/80 space-y-2">
               <p>Av. Innovación 1234, Piso 5</p>
               <p>Ciudad Empresarial, 12345</p>
-              <p>Teléfono: +1 (555) 123-4567</p>
+              <p>Teléfono: +54 (2901) 15-4567</p>
               <p>Email: info@consultoriaelevas.com</p>
             </address>
           </div>
         </div>
-        <div className="mt-12 p-4 border-t border-white/20  text-white text-sm flex items-center justify-center text-center">
+        <div className="mt-12 p-2 border-t border-white/20  text-white text-sm flex items-center justify-center ">
           <p>&copy; {new Date().getFullYear()} Consultoría Elevas. Todos los derechos reservados.</p>
         </div>
       </div>
+      
     </footer>
   )
 }

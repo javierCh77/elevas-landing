@@ -67,7 +67,7 @@ export default function ContactoPage() {
   }
 
   return (
-    <div className="container px-4 py-12 md:px-6 md:py-20">
+    <div className="px-4 py-12 md:px-6 md:py-20">
       <div className="mx-auto max-w-[800px] text-center mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-[#6d381a]">Contáctanos</h1>
         <p className="mt-4 text-lg text-[#6d381a]/70">
@@ -93,7 +93,7 @@ export default function ContactoPage() {
               <div>
                 <h3 className="text-lg font-semibold text-[#6d381a]">Teléfono</h3>
                 <p className="text-[#6d381a]/70">
-                  +1 (555) 123-4567
+                  +54 (2901) 15-647084
                   <br />
                   Lunes a Viernes, 9:00 - 18:00
                 </p>
