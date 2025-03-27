@@ -28,7 +28,7 @@ export default function PartnersSlider() {
           animate={{ x: "-100%" }}
           transition={{
             repeat: Infinity,
-            duration: 30, // Velocidad de desplazamiento
+            duration: 40, // Velocidad de desplazamiento
             ease: "linear",
           }}
         >
