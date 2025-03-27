@@ -82,7 +82,7 @@ export default function Home() {
   return (
     <div className="flex flex-col ">
       {/* Hero Section */}
-      <section className="relative flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-20 px-6 md:px-12  overflow-hidden">
+      <section className="relative flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-19 px-6 md:px-12  overflow-hidden">
         {/* Video de Fondo */}
         <video
           autoPlay
