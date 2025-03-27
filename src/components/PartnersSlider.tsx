@@ -40,7 +40,7 @@ export default function PartnersSlider() {
           key={index}
           src={logo}
           alt={`Partner ${index}`}
-          className="h-10 w-auto object-contain opacity-35  "
+          className="h-8 w-auto object-contain opacity-35  "
         />
           ))}
         </motion.div>
