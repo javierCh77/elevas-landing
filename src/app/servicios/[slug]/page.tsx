@@ -38,6 +38,7 @@ const services = [
     title: "Reclutamiento y Selección de Personal",
     description: "Identificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
     icon: <IoPeople className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>Nuestro servicio de reclutamiento y selección de personal está diseñado para encontrar el talento adecuado para tu empresa. Utilizamos una combinación de métodos tradicionales y tecnología avanzada para identificar, evaluar y atraer a los mejores candidatos.</p>
       
@@ -65,6 +66,7 @@ const services = [
     title: "Onboarding y Acompañamiento",
     description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
     icon: <IoClipboard className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>El servicio de onboarding y acompañamiento está diseñado para que los nuevos empleados se integren de manera efectiva a tu empresa, comprendan su rol y se alineen con los valores y objetivos de la organización.</p>
       
@@ -89,6 +91,7 @@ const services = [
     title: "Gestión del Talento y Capacitación",
     description: "Desarrollamos y optimizamos el potencial humano dentro de tu empresa.",
     icon: <IoBulb className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>Enfocamos nuestros esfuerzos en maximizar el rendimiento de tus empleados mediante programas personalizados de capacitación y desarrollo profesional.</p>
       
@@ -113,6 +116,7 @@ const services = [
     title: "Administración de Nómina y Beneficios",
     description: "Gestionamos de manera eficiente los pagos y beneficios de tus empleados, asegurando el cumplimiento normativo.",
     icon: <IoCash className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>Nos encargamos de todo lo relacionado con la administración de nómina y beneficios, asegurando que los pagos a los empleados se realicen de forma correcta, puntual y conforme a la normativa vigente.</p>
       
@@ -137,6 +141,7 @@ const services = [
     title: "Gestión del Clima Laboral",
     description: "Monitoreamos y mejoramos el ambiente de trabajo, promoviendo el bienestar y la productividad.",
     icon: <IoHappy className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>Nos encargamos de medir y gestionar el clima laboral dentro de tu empresa para asegurar un entorno positivo y saludable que impulse el bienestar de los empleados.</p>
       
@@ -161,6 +166,7 @@ const services = [
     title: "Evaluación del Desempeño",
     description: "Medimos el rendimiento de los empleados y proporcionamos retroalimentación para su mejora continua.",
     icon: <IoStatsChart className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>La evaluación de desempeño es crucial para medir y mejorar el rendimiento de los empleados. Implementamos procesos transparentes y objetivos para proporcionar una retroalimentación constructiva.</p>
       
@@ -185,6 +191,7 @@ const services = [
     title: "Encuestas de Salida y Análisis de Rotación",
     description: "Evaluamos las razones por las que los empleados dejan la empresa para reducir la rotación.",
     icon: <IoExit className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
     longDescription: `
       <p>Realizamos encuestas de salida a los empleados que dejan la organización para entender las razones detrás de su decisión. Estos datos nos permiten identificar áreas de mejora en la empresa y reducir la rotación.</p>
       
@@ -258,9 +265,10 @@ export default async function ServicePage({ params }: Props) {
         </div>
 
         <div className="relative">
-          <div className="sticky top-20">
+          <div className="sticky top-20 ">
             <Image
-              src="/placeholder.svg?height=400&width=600"
+              // src="/placeholder.svg?height=400&width=600"
+              src={service.image}
               width={600}
               height={400}
               alt={service.title}

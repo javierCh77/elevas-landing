@@ -139,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white md:px-20">
         <div className="px-4 md:px-6">
           <motion.div
             className="text-center mb-12"

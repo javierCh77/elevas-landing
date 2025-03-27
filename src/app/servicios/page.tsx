@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Brain, LineChart, Shield, Scale, Award, ExternalLink } from "lucide-react"
 import Link from "next/link"
+import { IoClipboard } from "react-icons/io5"
 
 export const metadata: Metadata = {
   title: "Servicios de RRHH",
@@ -43,12 +44,12 @@ export default function ServiciosPage() {
         "Utilizamos herramientas de análisis de sentimiento y encuestas periódicas para monitorear el clima organizacional y diseñar estrategias de mejora continua.",
     },
     {
-      id: "legal",
-      title: "Asesoría Legal",
-      description: "Aseguramos que tu empresa cumpla con las leyes laborales y normativas de seguridad.",
-      icon: <Scale className="h-10 w-10 text-[#e4b53b]" />,
+      id: "onboarding",
+      title: "Onboarding y Acompañamiento",
+      description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
+      icon: <IoClipboard className="h-10 w-10 text-[#e4b53b]" />,
       details:
-        "Nuestro equipo legal especializado te mantiene actualizado sobre cambios normativos y te ayuda a implementar políticas que protejan tanto a la empresa como a los empleados.",
+        "Con nuestro enfoque estructurado, aseguramos una transición más rápida y positiva para el nuevo colaborador, mejorando su rendimiento y compromiso.",
     },
     {
       id: "desempeno",
@@ -69,7 +70,7 @@ export default function ServiciosPage() {
   ]
 
   return (
-    <div className="px-4 py-12 md:px-6 md:py-20">
+    <div className="px-4 py-12 md:px-20 md:py-20">
       <div className="mx-auto max-w-[800px] text-center mb-12">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-[#6d381a]">
           Nuestros Servicios
