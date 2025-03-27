@@ -29,3 +29,7 @@ body {
 .clip-ellipse {
   clip-path: ellipse(100% 80% at center top);
 }
+
+.text-transparent {
+  color: transparent;
+}

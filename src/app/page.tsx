@@ -10,15 +10,13 @@ import {
   LineChart,
   Shield,
   Award,
-
   UserCheck,
   FileText,
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
+import PartnersSlider from "@/components/PartnersSlider";
 
 export default function Home() {
-  
-
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -132,6 +130,12 @@ export default function Home() {
             </Button>
           </div>
         </motion.div>
+      </section>
+      {/* partnert section */}
+      <section className=" py-5 bg-[#eca77f]">
+        <div className="w-full  ">
+        <PartnersSlider />
+        </div>
       </section>
 
       {/* Services Section */}
