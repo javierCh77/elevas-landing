@@ -27,7 +27,7 @@ const cases = [
   },
 ];
 
-export default function CasosExito() {
+export default function CaseStudy() {
   return (
     <section className="py-20 bg-[#f8f8f8] px-6 md:px-20">
       <motion.div

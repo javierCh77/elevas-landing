@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
-import CasosExito from "@/components/CasosExito";
+import CaseStudy from "@/components/CaseStudy";
 
 export default function Home() {
   const staggerContainer = {
@@ -177,7 +177,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <CasosExito />  {/* 🔥 Sección agregada aquí */}
+      <CaseStudy />  {/* 🔥 Sección agregada aquí */}
       {/* CTA Section */}
       <section className="py-16 bg-[#d98b5d]">
         <div className="px-4 md:px-6">

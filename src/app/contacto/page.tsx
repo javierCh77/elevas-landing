@@ -141,7 +141,7 @@ export default function ContactoPage() {
                   onChange={handleChange}
                   placeholder="Tu nombre"
                   required
-                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]"
+                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]  text-gray-500"
                 />
               </div>
               <div className="space-y-2">
@@ -156,7 +156,7 @@ export default function ContactoPage() {
                   onChange={handleChange}
                   placeholder="tu@email.com"
                   required
-                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]"
+                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b] text-gray-500"
                 />
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function ContactoPage() {
                   value={formData.telefono}
                   onChange={handleChange}
                   placeholder="Tu teléfono"
-                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]"
+                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b] text-gray-500"
                 />
               </div>
               <div className="space-y-2">
@@ -184,7 +184,7 @@ export default function ContactoPage() {
                   value={formData.empresa}
                   onChange={handleChange}
                   placeholder="Nombre de tu empresa"
-                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]"
+                  className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b] text-gray-500"
                 />
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function ContactoPage() {
                 Servicio de interés
               </Label>
               <Select onValueChange={handleSelectChange} value={formData.servicio}>
-                <SelectTrigger className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]">
+                <SelectTrigger className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b] text-gray-500">
                   <SelectValue placeholder="Selecciona un servicio" />
                 </SelectTrigger>
                 <SelectContent>
@@ -219,7 +219,7 @@ export default function ContactoPage() {
                 onChange={handleChange}
                 placeholder="¿Cómo podemos ayudarte?"
                 rows={4}
-                className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b]"
+                className="border-[#e4b53b]/30 focus:border-[#e4b53b] focus:ring-[#e4b53b] text-gray-500"
               />
             </div>
             <Button
