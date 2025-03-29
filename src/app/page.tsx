@@ -132,7 +132,7 @@ export default function Home() {
         </motion.div>
       </section>
       {/* partnert section */}
-      <section className=" py-5 bg-[#eca77f]">
+      <section className=" py-3 bg-[#eca77f]">
         <div className="w-full  ">
         <PartnersSlider />
         </div>

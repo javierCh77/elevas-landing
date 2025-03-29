@@ -2,19 +2,24 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-//import logo from '../../public/logo1.svg'
+
 
 
 
 
 
 const partners = [
-  //"../../public/logo1.svg",
-  "/partners/logo1.svg",
-   "/partners/logo2.png",
-//   "/partners/logo1.svg",
-//   "/partners/logo1.svg",
-//   "/partners/logo1.svg",
+  "/partners/Franquicias&Marcas_B&N_FoodGroupArgentina.png",
+  "/partners/Franquicias&Marcas_B&N_FREDDO.png",
+  "/partners/Franquicias&Marcas_B&N_GPS Seminuevos.png",
+  "/partners/Franquicias&Marcas_B&N_Grupo Faro.png",
+  "/partners/Franquicias&Marcas_B&N_GrupoGenerarTDF.png",
+  "/partners/Franquicias&Marcas_B&N_Localiza.png",
+  "/partners/Franquicias&Marcas_B&N_Ooshooia Suppliers.png",
+  "/partners/Franquicias&Marcas_B&N_Pampero.png",
+  //"Franquicias&Marcas_B&N_GrupoGenerarTDF",
+  //"Franquicias&Marcas_B&N_GrupoGenerarTDF",
+  //"Franquicias&Marcas_B&N_GrupoGenerarTDF",
 ];
 
 export default function PartnersSlider() {
@@ -23,12 +28,12 @@ export default function PartnersSlider() {
      
       <div className=" relative w-full">
         <motion.div
-          className="flex space-x-20 w-max"
+          className="flex space-x-20   "
           initial={{ x: "100%" }}
           animate={{ x: "-100%" }}
           transition={{
             repeat: Infinity,
-            duration: 40, // Velocidad de desplazamiento
+            duration: 80, // Velocidad de desplazamiento
             ease: "linear",
           }}
         >
@@ -40,7 +45,7 @@ export default function PartnersSlider() {
           key={index}
           src={logo}
           alt={`Partner ${index}`}
-          className="h-8 w-auto object-contain opacity-35  "
+          className="h-25 w-auto object-contain opacity-50 "
         />
           ))}
         </motion.div>
