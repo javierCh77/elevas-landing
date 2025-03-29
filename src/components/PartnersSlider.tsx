@@ -3,11 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-
-
-
-
-
 const partners = [
   "/partners/Franquicias&Marcas_B&N_FoodGroupArgentina.png",
   "/partners/Franquicias&Marcas_B&N_FREDDO.png",
@@ -17,20 +12,14 @@ const partners = [
   "/partners/Franquicias&Marcas_B&N_Localiza.png",
   "/partners/Franquicias&Marcas_B&N_Ooshooia Suppliers.png",
   "/partners/Franquicias&Marcas_B&N_Pampero.png",
-  //"Franquicias&Marcas_B&N_GrupoGenerarTDF",
-  //"Franquicias&Marcas_B&N_GrupoGenerarTDF",
-  //"Franquicias&Marcas_B&N_GrupoGenerarTDF",
 ];
 
 export default function PartnersSlider() {
-
-
   return (
-    <div className="overflow-hidden  ">
-     
-      <div className=" relative w-full">
+    <div className="overflow-hidden w-full py-4">
+      <div className="relative w-full">
         <motion.div
-          className="flex space-x-20   "
+          className="flex space-x-10"
           initial={{ x: "100%" }}
           animate={{ x: "-100%" }}
           transition={{
@@ -40,15 +29,15 @@ export default function PartnersSlider() {
           }}
         >
           {[...partners, ...partners].map((logo, index) => (
-          <Image
-          width={100}
-          height={50}
-          unoptimized={true} // 👈 Esto evita problemas con imágenes en /public
-          key={index}
-          src={logo}
-          alt={`Partner ${index}`}
-          className="h-25 w-auto object-contain opacity-50 "
-        />
+            <div key={index} className="relative h-16 w-auto flex items-center">
+              <Image
+                src={logo}
+                alt={`Partner ${index}`}
+                width={120}
+                height={60}
+                className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
           ))}
         </motion.div>
       </div>

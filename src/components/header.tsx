@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import logoelevas from '../../public/logoelevas.png'
+import logoelevas from "../../public/logoelevas.png";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,10 +48,11 @@ export default function Header() {
       <div className=" flex w-full h-18 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src={logoelevas} // Ruta de tu imagen
+            src={logoelevas}
             alt="ELEVAS Logo"
-            width={72} // Ajusta el tamaño según sea necesario
-            height={50} // Ajusta la altura según sea necesario
+            width={72} // Define width y height correctamente
+            priority
+            style={{ height: "auto" }} // Evita el warning
           />
         </Link>
         <nav className="hidden md:flex gap-6 ">
