@@ -29,7 +29,7 @@ export default function ServiciosPage() {
     },
     {
       id: "nomina",
-      title: "Administración de Nómina",
+      title: "Gestión de Payroll",
       description: "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
       icon: <LineChart className="h-10 w-10 text-[#e4b53b]" />,
       details:
