@@ -29,13 +29,13 @@ export default function PartnersSlider() {
           }}
         >
           {[...partners, ...partners].map((logo, index) => (
-            <div key={index} className="relative h-16 w-auto flex items-center">
+            <div key={index} className="relative h-18 min-w-[120px] flex items-center">
               <Image
                 src={logo}
                 alt={`Partner ${index}`}
                 width={120}
                 height={60}
-                className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+                className="object-contain opacity-70 hover:opacity-100 transition-opacity "
               />
             </div>
           ))}
