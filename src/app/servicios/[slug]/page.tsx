@@ -63,27 +63,33 @@ const services = [
   },
   {
     id: "onboarding",
-    title: "Onboarding y Acompañamiento",
+    title: "Onboarding, Acompañamiento y Gestión de Transiciones Laborales",
     description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
     icon: <IoClipboard className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
     longDescription: `
-      <p>El servicio de onboarding y acompañamiento está diseñado para que los nuevos empleados se integren de manera efectiva a tu empresa, comprendan su rol y se alineen con los valores y objetivos de la organización.</p>
+      <p>Nuestro servicio integral de Onboarding y Acompañamiento está diseñado para facilitar la integración de los nuevos empleados, asegurar su adaptación y alinear su desempeño con los objetivos organizacionales. Además, ofrecemos apoyo estratégico durante las transiciones laborales, como despidos, jubilaciones y pasividades, para asegurar un proceso respetuoso y sin impactos negativos en la organización y sus colaboradores.</p>
       
       <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Inducción sobre la cultura y valores organizacionales</li>
-        <li>Entrenamiento en herramientas y procesos internos</li>
-        <li>Asesoramiento continuo y acompañamiento personalizado</li>
-        <li>Encuestas de satisfacción para evaluar la integración</li>
+        <li><strong>Inducción Integral:</strong> Presentamos la cultura y objetivos de la empresa.</li>
+        <li><strong>Capacitación Específica:</strong> Entrenamos en herramientas y procesos internos.</li>
+        <li><strong>Entrevistas en Profundidad:</strong> Detectamos áreas de mejora tempranas.</li>
+        <li><strong>Reportes y Análisis:</strong> Evaluamos la integración y optimizamos procesos.</li>
+        <li><strong>Acompañamiento Personalizado:</strong> Seguimiento y planes de acción efectivos.</li>
+        <li><strong>Soporte en Desvinculación:</strong> Transiciones laborales respetuosas y guiadas.</li>
+        <li><strong>Aseguramos una experiencia positiva en cada etapa del ciclo laboral.</li>
       </ul>
       
       <p>Con nuestro enfoque estructurado, aseguramos una transición más rápida y positiva para el nuevo colaborador, mejorando su rendimiento y compromiso.</p>
     `,
     benefits: [
       "Reducción del tiempo de adaptación",
-      "Aumento en la satisfacción del nuevo empleado",
+      "Aumento en la satisfacción y compromiso del nuevo empleado",
       "Mejora en la retención de nuevos talentos",
+      "Detección temprana de áreas de mejora con soluciones personalizadas",
+      "Procesos de salida más humanizados",
+      "Optimización de transiciones laborales"
     ],
   },
   {
@@ -93,14 +99,15 @@ const services = [
     icon: <IoBulb className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
     longDescription: `
-      <p>Enfocamos nuestros esfuerzos en maximizar el rendimiento de tus empleados mediante programas personalizados de capacitación y desarrollo profesional.</p>
+      <p>Conectamos empresas con los mejores profesionales mediante IA, innovación y estrategia para contrataciones efectivas y alineadas con la cultura organizacional.</p>
       
       <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Evaluación de habilidades y competencias actuales</li>
-        <li>Diseño de programas de formación alineados con los objetivos empresariales</li>
-        <li>Seguimiento y medición del progreso de cada empleado</li>
-        <li>Capacitación continua en habilidades técnicas y blandas</li>
+        <li><strong>Atracción de talento:</strong> Búsqueda activa de los mejores candidatos.</li>
+        <li><strong>Evaluación precisa:</strong> Análisis de competencias técnicas y ajuste cultural.</li>
+        <li><strong>Optimización del proceso:</strong> IA y metodologías ágiles para mayor eficiencia.</li>
+        <li><strong>Éxito en la contratación:</strong> Acompañamiento en la incorporación.</li>
+        <li><strong>Evaluaciones personalizadas:</strong> Tests de competencias y psicotécnicos según necesidad.</li>
       </ul>
       
       <p>Desarrollamos el talento de tu equipo y fomentamos una cultura de aprendizaje constante, mejorando tanto la productividad como la motivación.</p>
@@ -113,27 +120,30 @@ const services = [
   },
   {
     id: "nomina",
-    title: "Administración de Nómina y Beneficios",
+    title: "Gestión de Payroll",
     description: "Gestionamos de manera eficiente los pagos y beneficios de tus empleados, asegurando el cumplimiento normativo.",
     icon: <IoCash className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
     longDescription: `
-      <p>Nos encargamos de todo lo relacionado con la administración de nómina y beneficios, asegurando que los pagos a los empleados se realicen de forma correcta, puntual y conforme a la normativa vigente.</p>
+      <p>Optimizamos la administración de nómina y beneficios, asegurando precisión, cumplimiento normativo y eficiencia operativa.</p>
       
       <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Cálculo de salarios, bonificaciones y deducciones</li>
-        <li>Gestión de beneficios sociales y compensaciones</li>
-        <li>Asesoramiento sobre el cumplimiento de normativas laborales</li>
-        <li>Generación de informes detallados para la toma de decisiones</li>
+        <li><strong>Procesamiento de nómina:</strong> Sueldos, bonificaciones e impuestos.</li>
+        <li><strong>Gestión de beneficios:</strong> Administración de incentivos y compensaciones.</li>
+        <li><strong>Cumplimiento normativo:</strong> Asesoramiento en regulaciones fiscales y laborales.</li>
+        <li><strong>Informes estratégicos:</strong> Análisis de ausentismo, rotación y costos laborales.</li>
+        <li><strong>Planificación de recursos:</strong> Gestión de horarios y vacaciones.</li>
+        <li><strong>Administración de plataformas:</strong> Monitoreo y optimización de herramientas payroll.</li>
       </ul>
       
       <p>Optimiza la administración de tu personal y asegura el cumplimiento de las obligaciones fiscales y laborales de manera eficiente y sin errores.</p>
     `,
     benefits: [
-      "Cumplimiento con las normativas fiscales y laborales",
-      "Mejora en la satisfacción de los empleados",
-      "Reducción de errores en el proceso de pago",
+      "Cumplimiento normativo sin riesgos",
+      "Reducción de errores y optimización del tiempo",
+      "Mayor satisfacción y confianza de los empleados",
+      "Toma de decisiones basada en dato"
     ],
   },
   {
