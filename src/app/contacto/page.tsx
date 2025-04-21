@@ -94,8 +94,8 @@ export default function ContactoPage() {
                   Dirección
                 </h3>
                 <p className="text-[#6d381a]/70">
-                  Av. Innovación 1234, Piso 5<br />
-                  Ciudad Empresarial, 12345
+                  Las margaritas 289 <br />
+                  Ushuaia, Tierra del fuego
                 </p>
               </div>
             </div>
@@ -117,9 +117,9 @@ export default function ContactoPage() {
               <div>
                 <h3 className="text-lg font-semibold text-[#6d381a]">Email</h3>
                 <p className="text-[#6d381a]/70">
-                  info@consultoriaelevas.com
+                  info@elevasconsulting.com
                   <br />
-                  soporte@consultoriaelevas.com
+                  talento@elevasconsulting.com
                 </p>
               </div>
             </div>

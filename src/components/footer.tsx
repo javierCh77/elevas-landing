@@ -12,7 +12,7 @@ export default function Footer() {
               Transformando el futuro de los recursos humanos con soluciones innovadoras.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-white hover:text-[#f1df96]">
+              {/* <Link href="#" className="text-white hover:text-[#f1df96]">
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
@@ -23,8 +23,8 @@ export default function Footer() {
               <Link href="#" className="text-white hover:text-[#f1df96]">
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
-              </Link>
-              <Link href="#" className="text-white hover:text-[#f1df96]">
+              </Link> */}
+              <Link href="https://www.linkedin.com/in/elevas-consulting-048271360/" target="_blank"  rel="noopener noreferrer" className="text-white hover:text-[#f1df96]">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
@@ -78,10 +78,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-[#f1df96]">Contacto</h3>
             <address className="not-italic text-white/80 space-y-2">
-              <p>Av. Innovación 1234, Piso 5</p>
-              <p>Ciudad Empresarial, 12345</p>
-              <p>Teléfono: +54 (2901) 15-4567</p>
-              <p>Email: info@consultoriaelevas.com</p>
+              <p>Las margaritas 289</p>
+              <p>Ushuaia, Tierra del fuego</p>
+              <p>Teléfono: +54 (2901) 15-647084</p>
+              <p>Email: info@elevasconsulting.com</p>
             </address>
           </div>
         </div>
