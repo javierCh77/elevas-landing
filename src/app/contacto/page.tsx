@@ -106,7 +106,7 @@ export default function ContactoPage() {
                   Teléfono
                 </h3>
                 <p className="text-[#6d381a]/70">
-                  +54 (2901) 15-647084
+                +54 9 (2901) 647084
                   <br />
                   Lunes a Viernes, 9:00 - 18:00
                 </p>

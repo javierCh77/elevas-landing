@@ -80,7 +80,7 @@ export default function Footer() {
             <address className="not-italic text-white/80 space-y-2">
               <p>Las margaritas 289</p>
               <p>Ushuaia, Tierra del fuego</p>
-              <p>Teléfono: +54 (2901) 15-647084</p>
+              <p>Teléfono: +54 9 (2901) 647084</p>
               <p>Email: info@elevasconsulting.com</p>
             </address>
           </div>
