@@ -133,15 +133,13 @@ export default function Home() {
         </motion.div>
       </section>
       {/* partnert section */}
-      <section className=" py-3 bg-[#eca77f]">
-        <div className="w-full  ">
-        <PartnersSlider />
+      <section className="py-2 bg-[#eca77f]">
+        <div className="w-full max-w-screen-xl mx-auto px-4">
+          <PartnersSlider />
         </div>
       </section>
-
       {/* Services Section */}
       <section className="py-20 bg-white md:px-20">
-      
         <div className="px-4 md:px-6">
           <motion.div
             className="text-center mb-12"
@@ -177,7 +175,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <CaseStudy />  {/* 🔥 Sección agregada aquí */}
+      <CaseStudy /> {/* 🔥 Sección agregada aquí */}
       {/* CTA Section */}
       <section className="py-16 bg-[#d98b5d]">
         <div className="px-4 md:px-6">
