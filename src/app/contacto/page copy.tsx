@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,21 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Loader2,
-  CheckCircle,
-  CalendarClock,
-  X,
-} from "lucide-react";
+import { MapPin, Phone, Mail, Loader2, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import {
-  InlineWidget,
-  PopupModal,
-} from "react-calendly";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -45,10 +33,10 @@ const initialForm = {
 
 export default function ContactoPage() {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [openCalendly, setOpenCalendly] = useState(false); // Calendly modal state
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -64,6 +52,7 @@ export default function ContactoPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validaciones simples
     if (!formData.nombre || !formData.email || !formData.servicio) {
       toast({
         title: "Campos incompletos",
@@ -76,18 +65,10 @@ export default function ContactoPage() {
     setIsSubmitting(true);
 
     try {
-      await emailjs.send(
+      await emailjs.sendForm(
         "service_p9arc0r",
         "template_7a0dx9t",
-        {
-          nombre: formData.nombre,
-          email: formData.email,
-          telefono: formData.telefono,
-          empresa: formData.empresa,
-          servicio: formData.servicio,
-          mensaje: formData.mensaje,
-          fechaHora: new Date().toLocaleString(),
-        },
+        formRef.current!,
         "UMjzBJv6hC0I6oZZQ"
       );
 
@@ -112,25 +93,7 @@ export default function ContactoPage() {
   };
 
   return (
-    <div className="px-4 py-12 md:px-20 md:py-20 relative">
-      {/* Calendly Modal */}
-      {openCalendly && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center">
-          <div className="bg-white p-4 rounded-lg shadow-lg max-w-4xl w-full relative">
-            <button
-              onClick={() => setOpenCalendly(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <InlineWidget
-              url="https://calendly.com/talento-elevasconsulting/30min" // <-- cambialo por tu link de Calendly
-              styles={{ height: "700px" }}
-            />
-          </div>
-        </div>
-      )}
-
+    <div className="px-4 py-12 md:px-20 md:py-20">
       <div className="mx-auto max-w-[800px] text-center mb-12">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-[#6d381a]">
           Contáctanos
@@ -141,7 +104,7 @@ export default function ContactoPage() {
       </div>
 
       <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-        {/* Info de contacto */}
+        {/* Contact Info */}
         <motion.div variants={fadeIn} initial="hidden" animate="visible">
           <div className="space-y-6">
             {[
@@ -194,17 +157,13 @@ export default function ContactoPage() {
               Agenda una consulta gratuita de 30 minutos con uno de nuestros
               especialistas.
             </p>
-            <Button
-              className="w-full bg-[#6d381a] hover:bg-[#6d381a]/90 text-white flex items-center gap-2"
-              onClick={() => setOpenCalendly(true)}
-            >
-              <CalendarClock className="w-5 h-5" />
+            <Button className="w-full bg-[#6d381a] hover:bg-[#6d381a]/90 text-white">
               Agendar llamada
             </Button>
           </div>
         </motion.div>
 
-        {/* Formulario */}
+        {/* Contact Form */}
         <motion.div
           variants={fadeIn}
           initial="hidden"
@@ -214,10 +173,12 @@ export default function ContactoPage() {
           <h2 className="text-2xl font-bold mb-6 text-[#6d381a]">
             Envíanos un mensaje
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-4 text-[#6d381a]">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 text-[#6d381a]">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="nombre">Nombre completo *</Label>
+                <Label htmlFor="nombre" className="text-[#6d381a]">
+                  Nombre completo *
+                </Label>
                 <Input
                   id="nombre"
                   name="nombre"
@@ -227,7 +188,9 @@ export default function ContactoPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email" className="text-[#6d381a]">
+                  Email *
+                </Label>
                 <Input
                   id="email"
                   name="email"
@@ -241,7 +204,9 @@ export default function ContactoPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="telefono">Teléfono</Label>
+                <Label htmlFor="telefono" className="text-[#6d381a]">
+                  Teléfono
+                </Label>
                 <Input
                   id="telefono"
                   name="telefono"
@@ -250,7 +215,9 @@ export default function ContactoPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="empresa">Empresa</Label>
+                <Label htmlFor="empresa" className="text-[#6d381a]">
+                  Empresa
+                </Label>
                 <Input
                   id="empresa"
                   name="empresa"
@@ -260,15 +227,18 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="servicio">Servicio de interés *</Label>
+            <div className="space-y-2 ">
+              <Label htmlFor="servicio" className="text-[#6d381a]">
+                Servicio de interés *
+              </Label>
               <Select
+              
                 onValueChange={handleSelectChange}
                 value={formData.servicio}
                 required
               >
-                <SelectTrigger className="text-[#6d381a]">
-                  <SelectValue placeholder="Selecciona un servicio" />
+              <SelectTrigger className="text-[#6d381a]">
+                  <SelectValue placeholder="Selecciona un servicio"  />
                 </SelectTrigger>
                 <SelectContent>
                   {[
@@ -281,11 +251,7 @@ export default function ContactoPage() {
                     "Outsourcing",
                     "Otro",
                   ].map((s) => (
-                    <SelectItem
-                      key={s}
-                      value={s}
-                      className="text-[#6d381a] bg-white cursor-pointer hover:bg-[#f1df96]"
-                    >
+                    <SelectItem key={s} value={s} className="text-[#6d381a] bg-white cursor-pointer hover:bg-[#f1df96]">
                       {s}
                     </SelectItem>
                   ))}
@@ -294,7 +260,9 @@ export default function ContactoPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="mensaje">Mensaje</Label>
+              <Label htmlFor="mensaje" className="text-[#6d381a]">
+                Mensaje
+              </Label>
               <Textarea
                 id="mensaje"
                 name="mensaje"
@@ -304,6 +272,9 @@ export default function ContactoPage() {
                 rows={4}
               />
             </div>
+
+            {/* Hidden inputs for EmailJS */}
+            <input type="hidden" name="fechaHora" value={new Date().toLocaleString()} />
 
             <Button
               type="submit"
