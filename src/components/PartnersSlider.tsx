@@ -23,10 +23,10 @@ export default function PartnersSlider() {
       const width = window.innerWidth;
       if (width < 768) {
         // Mobile
-        setDuration(100); // más rápido en mobile
+        setDuration(20); // más rápido en mobile
       } else {
         // Desktop / Tablet
-        setDuration(60); // más lento
+        setDuration(40); // más lento
       }
     };
 
@@ -36,7 +36,7 @@ export default function PartnersSlider() {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full py-2 bg-[#eca77f]">
+    <div className="overflow-hidden w-full py-6 bg-[#eca77f]">
       <div className="relative w-full">
         <motion.div
           className="flex space-x-10 items-center"
@@ -53,16 +53,12 @@ export default function PartnersSlider() {
               key={index}
               className="relative min-w-[100px] h-[60px] sm:h-[80px] md:h-[100px] flex items-center"
             >
-            <div key={index} className="relative h-18 min-w-[120px] flex items-center">
               <Image
                 src={logo}
                 alt={`Partner ${index}`}
                 fill
                 className="object-contain opacity-70 hover:opacity-100 transition-opacity"
                 sizes="(max-width: 640px) 100px, (max-width: 768px) 120px, 150px"
-                width={120}
-                height={60}
-                className="object-contain opacity-70 hover:opacity-100 transition-opacity "
               />
             </div>
           ))}
