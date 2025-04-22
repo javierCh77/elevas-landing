@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
-
+// import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+ import { Linkedin } from "lucide-react"
 export default function Footer() {
   return (
     <footer className="bg-[#6d381a] text-white py-12">
