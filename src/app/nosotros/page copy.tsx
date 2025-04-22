@@ -3,6 +3,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+
+
+
+
+
+
 export const metadata: Metadata = {
   title: "Sobre Nosotros",
   description:
@@ -14,26 +20,30 @@ export default function NosotrosPage() {
     {
       name: "Elisa Lo Gioco",
       position: "Directora Fundadora",
-      bio: "Impulsora de la transformación digital en gestion de talento humano con más de 15 años de experiencia liderando equipos y procesos de cambio.",
+      bio: "Especialista en transformación digital de RRHH con más de 15 años de experiencia.",
       image: "/team/elisa.jpg",
+
     },
     {
       name: "Manuela Rodríguez",
       position: "Lic. Relaciones del trabajo",
-      bio: "Especialista en innovación en RRHH e integración de IA para potenciar la gestión del talento.",
+      bio: "Experto en implementación de IA en procesos de recursos humanos y gestión del cambio.",
       image: "/team/manuela.jpg",
+
     },
     {
       name: "Maria Inés Arenas",
       position: "Psicologa",
-      bio: "Experta en desarrollo organizacional y bienestar en entornos laborales digitales.",
-      image: "/team/maria.jpg",
+      bio: "Especializada en desarrollo organizacional y gestión del talento en entornos digitales.",
+      image: "/team/elisa.jpg",
+
     },
     {
       name: "Natalia Echazarreta",
       position: "Abogada",
-      bio: "Asesora legal en derecho laboral y nuevas formas de trabajo en la era digital.",
-      image: "/team/natalia.jpg",
+      bio: "Abogado especializado en derecho laboral y nuevas modalidades de trabajo.",
+      image: "/team/elisa.jpg",
+
     },
   ];
 
@@ -48,7 +58,7 @@ export default function NosotrosPage() {
         </p>
       </div>
 
-      <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center mb-20">
+      <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center mb-20 bg-amber-200">
         <div>
           <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-[#6d381a] mb-4">
             Nuestra Misión
@@ -78,18 +88,29 @@ export default function NosotrosPage() {
             potencie las capacidades humanas y cree entornos de trabajo más
             satisfactorios y productivos.
           </p>
+          </div>
         </div>
-        <div className="relative w-full h-[500px] ">
-          {" "}
-          {/* Ajustá el alto según tu diseño */}
-          <Image
-            src="/vision3.jpg"
-            alt="Equipo de Consultoría Elevas"
-            fill
-            className="object-cover rounded-lg"
-          />
-        </div>
-      </div>
+        
+        {team.map((member, index) => (
+          <div
+            key={index}
+            className="border border-[#e4b53b]/30 p-6 rounded-lg text-center"
+          >
+            <Image
+              src={`${member.image}`}
+              width={96}
+              height={96}
+              alt={`Foto de ${member.name}`}
+              className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
+            />
+            <h3 className="text-xl font-semibold mb-1 text-[#6d381a]">
+              {member.name}
+            </h3>
+            <p className="text-[#e4b53b] font-medium mb-2">{member.position}</p>
+            <p className="text-[#6d381a]/70 text-sm">{member.bio}</p>
+          </div>
+        ))}
+      
 
       <div className="mb-20">
         <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-[#6d381a] mb-8 text-center">
@@ -145,13 +166,11 @@ export default function NosotrosPage() {
               key={index}
               className="border border-[#e4b53b]/30 p-6 rounded-lg text-center"
             >
-              <Image
-                src={`${member.image}`}
-                width={96}
-                height={96}
-                alt={`Foto de ${member.name}`}
-                className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
-              />
+              <div className="w-24 h-24 rounded-full bg-[#e4b53b]/20 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-2xl text-[#6d381a]">
+                  {member.name.charAt(0)}
+                </span>
+              </div>
               <h3 className="text-xl font-semibold mb-1 text-[#6d381a]">
                 {member.name}
               </h3>
