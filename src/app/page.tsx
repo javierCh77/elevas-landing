@@ -109,7 +109,7 @@ export default function Home() {
             <span className="block text-[#eca77f] ">Del talento</span>
             <span className="block text-white ">Humano está aquí</span>
           </h1>
-          <p className="text-lg text-white/90 md:text-xl drop-shadow-md bg-black/25 rounded p-2">
+          <p className="text-lg text-white/90 md:text-xl drop-shadow-md  p-2">
             Preparamos a tu empresa para enfrentar los desafíos de la
             digitalización y la IA en la gestión del talento humano.
           </p>
@@ -203,14 +203,12 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <div className="flex flex-col">
-      {/* ...todo tu contenido... */}
-      <CaseStudy />
+   
       <section className="py-16 bg-[#d98b5d]">...</section>
 
       {/* 👉 Botón de WhatsApp */}
       <WhatsAppButton />
-    </div>
+ 
     </div>
   );
 }
