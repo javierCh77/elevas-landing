@@ -16,32 +16,29 @@ const partners = [
 ];
 
 export default function PartnersSlider() {
-  const [duration, setDuration] = useState(40); // default para desktop
+  const [duration, setDuration] = useState(40); // Default para desktop
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        // Mobile
-        setDuration(20); // más rápido en mobile
+        setDuration(20); // Más rápido en mobile
       } else {
-        // Desktop / Tablet
-        setDuration(40); // más lento
+        setDuration(40); // Más lento en desktop
       }
     };
 
-    handleResize(); // corre al cargar
-    window.addEventListener("resize", handleResize); // escucha cambios de tamaño
+    handleResize(); // Corre al montar
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div className="overflow-hidden w-full py-6 bg-[#eca77f]">
-      <div className="relative w-full">
+      <div className="mx-auto max-w-[1200px] relative">
         <motion.div
           className="flex space-x-10 items-center"
-          initial={{ x: "100%" }}
-          animate={{ x: "-100%" }}
+          animate={{ x: ["0%", "-100%"] }}
           transition={{
             repeat: Infinity,
             duration: duration,
