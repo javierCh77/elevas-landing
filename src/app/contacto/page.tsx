@@ -272,6 +272,7 @@ export default function ContactoPage() {
                 rows={4}
               />
             </div>
+            
 
             {/* Hidden inputs for EmailJS */}
             <input type="hidden" name="fechaHora" value={new Date().toLocaleString()} />

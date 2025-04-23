@@ -16,6 +16,7 @@ import {
 import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
 import CaseStudy from "@/components/CaseStudy";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   const staggerContainer = {
@@ -202,6 +203,14 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      <div className="flex flex-col">
+      {/* ...todo tu contenido... */}
+      <CaseStudy />
+      <section className="py-16 bg-[#d98b5d]">...</section>
+
+      {/* 👉 Botón de WhatsApp */}
+      <WhatsAppButton />
+    </div>
     </div>
   );
 }
