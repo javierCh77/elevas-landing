@@ -88,7 +88,7 @@ export default function Footer() {
         <div className="mt-12 p-2 border-t border-white/20  text-white text-sm flex items-center justify-center flex-col  ">
           <p>&copy; {new Date().getFullYear()} Elevas. Todos los derechos reservados.</p>
             <div >
-            <span className="text-[#f1df96] cursor-pointer">Alba</span>
+            <span className="text-[#f1df96] cursor-pointer">v0</span>
             <span> | Design & development</span>  
             </div>
           
