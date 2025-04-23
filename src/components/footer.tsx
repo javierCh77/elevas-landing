@@ -4,7 +4,7 @@ import { Linkedin } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-[#6d381a] text-white py-12">
-      <div className="px-4 md:px-6">
+       <div className="px-4 md:px-6 max-w-7xl mx-auto">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <h3 className="text-xl font-bold mb-4 text-[#f1df96]">
@@ -114,13 +114,30 @@ export default function Footer() {
             </h3>
             <address className="not-italic text-white/80 space-y-2">
               <p>Las margaritas 289</p>
-              <p>Ushuaia, Tierra del fuego</p>
-              <p>Teléfono: +54 9 (2901) 647084</p>
-              <p>Email: info@elevasconsulting.com</p>
+              <p>Ushuaia, Tierra del Fuego</p>
+              <p>
+                Teléfono:{" "}
+                <a
+                  href="tel:+5492901647084"
+                  className="text-white hover:text-[#f1df96] underline"
+                >
+                  +54 9 (2901) 647084
+                </a>
+              </p>
+              <p>
+                Email:{" "}
+                <a
+                  href="mailto:info@elevasconsulting.com"
+                  className="text-white hover:text-[#f1df96] underline"
+                >
+                  info@elevasconsulting.com
+                </a>
+              </p>
             </address>
           </div>
         </div>
-        <div className="mt-12 p-2 border-t border-white/20  text-white text-sm flex items-center justify-center flex-col  ">
+        <div className="mt-12 p-2 border-t border-white/20 text-white text-sm flex items-center justify-center flex-col text-center">
+
           <p>
             &copy; {new Date().getFullYear()} Elevas. Todos los derechos
             reservados.
