@@ -203,10 +203,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-   
-      <section className="py-16 bg-[#d98b5d]">...</section>
 
-      {/* 👉 Botón de WhatsApp */}
       <WhatsAppButton />
  
     </div>
