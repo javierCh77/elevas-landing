@@ -92,6 +92,8 @@ export default function Home() {
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+          aria-hidden="true"
+          role="presentation"
         >
           <source src="/hero.mp4" type="video/mp4" />
           Tu navegador no soporta videos.
@@ -203,9 +205,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       <WhatsAppButton />
- 
     </div>
   );
 }
