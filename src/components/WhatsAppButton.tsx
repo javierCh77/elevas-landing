@@ -39,6 +39,7 @@ export default function WhatsAppButton() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={toggleTooltip}
+          aria-label="Contactar por WhatsApp"
           className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl flex items-center justify-center"
           animate={{
             scale: [1, 1.1, 1],
