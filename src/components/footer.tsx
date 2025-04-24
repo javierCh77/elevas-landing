@@ -149,7 +149,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-[#f1df96] cursor-pointer hover:underline transition-transform transform hover:scale-105 duration-300"
             >
-              v0
+              Alba
             </a>
             <span> | Design & development</span>
           </div>
