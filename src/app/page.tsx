@@ -18,6 +18,7 @@ import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
 import CaseStudy from "@/components/CaseStudy";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { IoAnalytics } from "react-icons/io5";
 
 export default function Home() {
   const staggerContainer = {
