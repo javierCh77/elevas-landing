@@ -110,12 +110,12 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <Button
-                  asChild
-                  className="mt-4 bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white"
-                >
-                  <Link href="/contacto">Contáctanos</Link>
-                </Button>
+              <Button
+  asChild
+  className="hidden md:flex bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white shadow-md hover:shadow-lg transition-shadow"
+>
+  <Link href="/contacto">Contáctanos</Link>
+</Button>
               </div>
             </SheetContent>
           </Sheet>

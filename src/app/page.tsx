@@ -17,7 +17,7 @@ import {
 import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
 import CaseStudy from "@/components/CaseStudy";
-import { IoAnalytics } from "react-icons/io5";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   const staggerContainer = {
@@ -100,6 +100,8 @@ export default function Home() {
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+          aria-hidden="true"
+          role="presentation"
         >
           <source src="/hero.mp4" type="video/mp4" />
           Tu navegador no soporta videos.
@@ -117,7 +119,7 @@ export default function Home() {
             <span className="block text-[#eca77f] ">Del talento</span>
             <span className="block text-white ">Humano está aquí</span>
           </h1>
-          <p className="text-lg text-white/90 md:text-xl drop-shadow-md bg-black/25 rounded p-2">
+          <p className="text-lg text-white/90 md:text-xl drop-shadow-md  p-2">
             Preparamos a tu empresa para enfrentar los desafíos de la
             digitalización y la IA en la gestión del talento humano.
           </p>
@@ -166,7 +168,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 "
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -211,6 +213,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      <WhatsAppButton />
     </div>
   );
 }

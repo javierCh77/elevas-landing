@@ -272,6 +272,7 @@ export default function ContactoPage() {
                 rows={4}
               />
             </div>
+            
 
             {/* Hidden inputs for EmailJS */}
             <input type="hidden" name="fechaHora" value={new Date().toLocaleString()} />
@@ -279,7 +280,7 @@ export default function ContactoPage() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white flex justify-center items-center gap-2"
+              className="w-full bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white flex justify-center items-center gap-2 cursor-pointer"
             >
               {isSubmitting ? (
                 <>

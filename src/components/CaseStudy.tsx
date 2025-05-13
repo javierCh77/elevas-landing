@@ -51,7 +51,7 @@ export default function CaseStudy() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         {cases.map((caso) => (
-          <div key={caso.id} className="p-6 bg-white rounded-2xl shadow-lg">
+          <div key={caso.id} className="p-6 bg-white rounded-2xl shadow-md">
             <div className="flex items-center gap-4 mb-4">
               <Briefcase className="h-8 w-8 text-[#d98b5d]" />
               <h3 className="text-xl font-semibold text-[#6d381a]">
