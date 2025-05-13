@@ -226,7 +226,7 @@ const services = [
   title: "Evaluaciones Psicotécnicas y por Competencias",
   description: "Evaluamos habilidades, rasgos conductuales y el encaje cultural para potenciar decisiones estratégicas de RRHH.",
   icon: <IoAnalytics className="h-12 w-12 text-[#e4b53b]" />,
-  image: "/service/competencias.jpg",
+  image: "/service/seleccion.jpg",
   longDescription: `
     <p>Nuestras evaluaciones psicotécnicas y por competencias permiten identificar las habilidades, características cognitivas y conductuales más relevantes para cada puesto.</p>
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Brain, LineChart, Shield, Award, ExternalLink, BookOpenCheck } from "lucide-react"
+import { Users, Brain, LineChart, Shield, Award, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { IoAnalytics, IoClipboard } from "react-icons/io5"
 
