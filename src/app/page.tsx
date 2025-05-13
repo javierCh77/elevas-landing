@@ -12,7 +12,6 @@ import {
   Award,
   UserCheck,
   FileText,
-  BookOpenCheck,
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
