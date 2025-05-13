@@ -12,10 +12,12 @@ import {
   Award,
   UserCheck,
   FileText,
+  BookOpenCheck,
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
 import CaseStudy from "@/components/CaseStudy";
+import { IoAnalytics } from "react-icons/io5";
 
 export default function Home() {
   const staggerContainer = {
@@ -77,6 +79,13 @@ export default function Home() {
       description:
         "Automatizamos y analizamos encuestas para comprender los motivos por los que los empleados dejan la organización.",
       icon: <FileText className="h-10 w-10" />,
+    },
+    {
+      id: "competencias",
+      title: "Evaluaciones Psicotécnicas y por Competencias",
+      description:
+       "Aplicamos herramientas para evaluar el perfil conductual, habilidades y competencias clave de los candidatos o empleados.",
+      icon: <IoAnalytics className="h-10 w-10" />,
     },
   ];
 

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react";
-import { IoBulb, IoCash, IoClipboard, IoExit, IoHappy, IoPeople, IoStatsChart } from 'react-icons/io5';
+import { IoAnalytics, IoBulb, IoCash, IoClipboard, IoExit, IoHappy, IoPeople, IoStatsChart } from 'react-icons/io5';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -35,7 +35,7 @@ export async function generateStaticParams() {
 const services = [
   {
     id: "reclutamiento",
-    title: "Reclutamiento y Selección de Personal",
+    title: "Atracción y Selección de Talento",
     description: "Identificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
     icon: <IoPeople className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
@@ -221,6 +221,32 @@ const services = [
       "Identificación de áreas críticas para la empresa",
     ],
   },
+ {
+  id: "competencias",
+  title: "Evaluaciones Psicotécnicas y por Competencias",
+  description: "Evaluamos habilidades, rasgos conductuales y el encaje cultural para potenciar decisiones estratégicas de RRHH.",
+  icon: <IoAnalytics className="h-12 w-12 text-[#e4b53b]" />,
+  image: "/service/competencias.jpg",
+  longDescription: `
+    <p>Nuestras evaluaciones psicotécnicas y por competencias permiten identificar las habilidades, características cognitivas y conductuales más relevantes para cada puesto.</p>
+
+    <h3>¿Qué ofrecemos?</h3>
+    <ul>
+      <li>Tests psicométricos y proyectivos aplicados por profesionales</li>
+      <li>Evaluaciones de competencias blandas y técnicas</li>
+      <li>Informes integrales para toma de decisiones de selección, promoción o desarrollo</li>
+      <li>Adaptación de las evaluaciones según el perfil requerido</li>
+    </ul>
+
+    <p>Este servicio permite predecir el desempeño laboral, optimizar los procesos de reclutamiento y asegurar el encaje entre los candidatos y la cultura organizacional.</p>
+  `,
+  benefits: [
+    "Mejora en la calidad de las contrataciones",
+    "Reducción de riesgos en la selección de personal",
+    "Identificación de potencial de desarrollo y liderazgo",
+  ],
+}
+  
 ];
 
 

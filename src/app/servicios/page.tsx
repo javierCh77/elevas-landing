@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Brain, LineChart, Shield, Award, ExternalLink } from "lucide-react"
+import { Users, Brain, LineChart, Shield, Award, ExternalLink, BookOpenCheck } from "lucide-react"
 import Link from "next/link"
-import { IoClipboard } from "react-icons/io5"
+import { IoAnalytics, IoClipboard } from "react-icons/io5"
 
 export const metadata: Metadata = {
   title: "Servicios de RRHH",
@@ -13,57 +13,65 @@ export default function ServiciosPage() {
   const services = [
     {
       id: "reclutamiento",
-      title: "Reclutamiento y Selección",
-      description: "Identificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
+      title: "Atracción y Selección de Talento",
+      description: "Identificamos y conectamos con los perfiles ideales para tu organización, mediante procesos ágiles, personalizados y basados en competencias.",
       icon: <Users className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Nuestro proceso de reclutamiento utiliza IA para encontrar a los candidatos más adecuados para cada posición, evaluando tanto habilidades técnicas como adaptación cultural.",
     },
     {
       id: "talento",
-      title: "Gestión del Talento",
-      description: "Desarrollamos programas de formación y planes de carrera para potenciar habilidades.",
+      title: "Desarrollo y Gestión del Talento",
+      description: "Diseñamos programas de formación, desarrollo y carrera para potenciar equipos, alineando las capacidades individuales con los objetivos del negocio.",
       icon: <Brain className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Creamos planes de desarrollo personalizados que preparan a tus empleados para los desafíos del futuro laboral, con enfoque en habilidades digitales y adaptabilidad.",
     },
     {
       id: "nomina",
-      title: "Gestión de Payroll",
-      description: "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
+      title: "Gestión Integral de Compensaciones y Marco Legal",
+      description: "Administramos sueldos, beneficios, licencias y vacaciones, asegurando una gestión eficiente y en cumplimiento con la normativa vigente.",
       icon: <LineChart className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Automatizamos los procesos de nómina para reducir errores y aumentar la eficiencia, garantizando el cumplimiento de todas las obligaciones fiscales y laborales.",
     },
     {
       id: "clima-laboral",
-      title: "Gestión del Clima Laboral",
-      description: "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
+      title: "Clima y Cultura Organizacional",
+      description: "Impulsamos entornos laborales saludables, promovemos la comunicación efectiva y acompañamos procesos de transformación cultural.",
       icon: <Shield className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Utilizamos herramientas de análisis de sentimiento y encuestas periódicas para monitorear el clima organizacional y diseñar estrategias de mejora continua.",
     },
     {
       id: "onboarding",
-      title: "Onboarding y Acompañamiento",
-      description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
+      title: "Onboarding Estratégico",
+      description: "Diseñamos procesos de integración efectivos para asegurar una incorporación fluida, motivadora y alineada con la cultura organizacional.",
       icon: <IoClipboard className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Con nuestro enfoque estructurado, aseguramos una transición más rápida y positiva para el nuevo colaborador, mejorando su rendimiento y compromiso.",
     },
     {
       id: "desempeno",
-      title: "Evaluación del Desempeño",
-      description: "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
+      title: "Evaluación y Feedback de Desempeño",
+      description: "Medimos y fortalecemos el rendimiento a través de herramientas objetivas que promueven el desarrollo continuo y la toma de decisiones informada.",
       icon: <Award className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Diseñamos sistemas de evaluación objetivos que combinan métricas cuantitativas con feedback cualitativo, promoviendo una cultura de mejora continua.",
     },
     {
       id: "outsourcing",
-      title: "Outsourcing",
-      description: "Ofrecemos personal temporal o tercerizamos funciones de RRHH a otras empresas.",
+      title: "Outsourcing de RRHH",
+      description: "Externalizamos procesos de Recursos Humanos con un enfoque profesional, ágil y adaptado a las necesidades de tu organización.",
       icon: <ExternalLink className="h-10 w-10 text-[#e4b53b]" />,
+      details:
+        "Gestionamos procesos completos de RRHH o proporcionamos personal especializado temporal, permitiéndote concentrarte en tu core business mientras optimizas costos.",
+    },
+    {
+      id: "competencias",
+      title: "Evaluaciones Psicotécnicas y por Competencias",
+      description: "Aplicamos herramientas especializadas para evaluar habilidades, personalidad y competencias. Informes claros y útiles para procesos de selección, desarrollo o promoción.",
+      icon: <IoAnalytics className="h-10 w-10 text-[#e4b53b]" />,
       details:
         "Gestionamos procesos completos de RRHH o proporcionamos personal especializado temporal, permitiéndote concentrarte en tu core business mientras optimizas costos.",
     },

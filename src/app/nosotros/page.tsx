@@ -15,13 +15,13 @@ export default function NosotrosPage() {
       name: "Elisa Lo Gioco",
       position: "Directora Fundadora",
       bio: "Impulsora de la transformación digital en gestion de talento humano con más de 15 años de experiencia liderando equipos y procesos de cambio.",
-      image: "/team/elisa.jpg",
+      image: "/team/elisa.jpeg",
     },
     {
       name: "Manuela Rodríguez",
       position: "Lic. Relaciones del trabajo",
       bio: "Especialista en innovación en RRHH e integración de IA para potenciar la gestión del talento.",
-      image: "/team/manuela.jpg",
+      image: "/team/manuela.jpeg",
     },
     {
       name: "Maria Inés Arenas",
