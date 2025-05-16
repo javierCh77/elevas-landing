@@ -9,7 +9,6 @@ import {
   Brain,
   LineChart,
   Shield,
-  Award,
   UserCheck,
   FileText,
 } from "lucide-react";
@@ -17,7 +16,7 @@ import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
 import CaseStudy from "@/components/CaseStudy";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { IoAnalytics } from "react-icons/io5";
+
 
 export default function Home() {
   const staggerContainer = {
@@ -30,64 +29,57 @@ export default function Home() {
     },
   };
 
-  const services = [
-    {
-      id: "reclutamiento",
-      title: "Reclutamiento y selección de personal",
-      description:
-        "Identificamos, atraemos y contratamos a los candidatos ideales para los puestos de trabajo.",
-      icon: <Users className="h-10 w-10" />,
-    },
-    {
-      id: "onboarding",
-      title: "Onboarding y acompañamiento",
-      description:
-        "Implementamos un proceso de integración para los nuevos empleados, detectamos posibles dificultades y brindamos seguimiento en sus primeras etapas.",
-      icon: <UserCheck className="h-10 w-10" />,
-    },
-    {
-      id: "talento",
-      title: "Gestión del talento y capacitación",
-      description:
-        "Desarrollamos programas de formación y planes de carrera para mejorar las habilidades de los empleados.",
-      icon: <Brain className="h-10 w-10" />,
-    },
-    {
-      id: "nomina",
-      title: "Gestión de Payroll",
-      description:
-        "Gestionamos sueldos, bonificaciones, vacaciones y otros beneficios laborales.",
-      icon: <LineChart className="h-10 w-10" />,
-    },
-    {
-      id: "clima-laboral",
-      title: "Gestión del clima laboral",
-      description:
-        "Fomentamos un ambiente de trabajo positivo y resolvemos conflictos internos.",
-      icon: <Shield className="h-10 w-10" />,
-    },
-    {
-      id: "desempeno",
-      title: "Evaluación del desempeño",
-      description:
-        "Implementamos sistemas para medir y mejorar el rendimiento de los empleados.",
-      icon: <Award className="h-10 w-10" />,
-    },
-    {
-      id: "outsourcing",
-      title: "Encuestas de salida y análisis de rotación",
-      description:
-        "Automatizamos y analizamos encuestas para comprender los motivos por los que los empleados dejan la organización.",
-      icon: <FileText className="h-10 w-10" />,
-    },
-    {
-      id: "competencias",
-      title: "Evaluaciones Psicotécnicas y por Competencias",
-      description:
-       "Aplicamos herramientas para evaluar el perfil conductual, habilidades y competencias clave de los candidatos o empleados.",
-      icon: <IoAnalytics className="h-10 w-10" />,
-    },
-  ];
+ const services = [
+  {
+    id: "atraccion-seleccion",
+    title: "Atracción y Selección de Talento",
+    description: "Buscamos y seleccionamos a los candidatos ideales para cada puesto clave.",
+    icon: <Users className="h-10 w-10" />, // ✅ Correcto
+  },
+  {
+    id: "talento-capacitacion",
+    title: "Gestión del Talento y Capacitación",
+    description: "Acompañamos al talento desde su integración hasta su desarrollo continuo.",
+    icon: <UserCheck className="h-10 w-10" />, // ✅ Correcto
+  },
+  {
+    id: "compensaciones-legal",
+    title: "Compensaciones y Marco Legal",
+    description: "Diseñamos esquemas salariales justos y alineados al marco normativo.",
+    icon: <FileText className="h-10 w-10" />, // ⬅️ Mejor que Brain aquí
+  },
+  {
+    id: "clima-cultura",
+    title: "Clima y Cultura Organizacional",
+    description: "Mejoramos el ambiente laboral y alineamos valores organizacionales.",
+    icon: <Shield className="h-10 w-10" />, // ✅ Adecuado
+  },
+  {
+    id: "onboarding-transacciones",
+    title: "Onboarding y Transiciones Laborales",
+    description: "Optimizamos la incorporación y salida del personal con procesos fluidos.",
+    icon: <ArrowRight className="h-10 w-10" />, // ⬅️ Representa transición
+  },
+  {
+    id: "feedback-desempeno",
+    title: "Feedback y Desarrollo del Desempeño",
+    description: "Impulsamos el desarrollo profesional mediante evaluaciones efectivas.",
+    icon: <LineChart className="h-10 w-10" />, // ⬅️ Mide rendimiento
+  },
+  {
+    id: "outsourcing",
+    title: "Outsourcing de Recursos Humanos",
+    description: "Delegá la gestión operativa de RRHH para enfocarte en el crecimiento.",
+    icon: <Users className="h-10 w-10" />, // 👥 Alternativa: <UserCheck />
+  },
+  {
+    id: "psicotecnica-competencias",
+    title: "Evaluaciones Psicotécnicas y por Competencias",
+    description: "Evaluamos habilidades cognitivas y conductuales con precisión.",
+    icon: <Brain className="h-10 w-10" />, // ✅ Ideal aquí
+  },
+];
+
 
   return (
     <div className="flex flex-col ">

@@ -3,8 +3,7 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft } from "lucide-react";
-import { IoAnalytics, IoBulb, IoCash, IoClipboard, IoExit, IoHappy, IoPeople, IoStatsChart } from 'react-icons/io5';
+import { ArrowLeft, ArrowRight, Brain, FileText, LineChart, Shield, UserCheck, Users } from "lucide-react";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -34,218 +33,240 @@ export async function generateStaticParams() {
 
 const services = [
   {
-    id: "reclutamiento",
+    id: "atraccion-seleccion",
     title: "Atracción y Selección de Talento",
-    description: "Identificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
-    icon: <IoPeople className="h-12 w-12 text-[#e4b53b]" />,
+    description: "aaIdentificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
+    icon: <Users className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
     longDescription: `
-      <p>Nuestro servicio de reclutamiento y selección de personal está diseñado para encontrar el talento adecuado para tu empresa. Utilizamos una combinación de métodos tradicionales y tecnología avanzada para identificar, evaluar y atraer a los mejores candidatos.</p>
+      <p>Conectamos tu empresa con el talento adecuado a través de un proceso ágil, tecnológico y profesional. Combinamos métodos tradicionales con inteligencia artificial para identificar, evaluar y atraer a los mejores perfiles, asegurando calidad y efectividad.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
       
-      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Análisis detallado del puesto y la cultura organizacional</li>
-        <li>Búsqueda activa en múltiples canales y redes profesionales</li>
-        <li>Evaluación de competencias técnicas y habilidades blandas</li>
-        <li>Verificación exhaustiva de referencias y antecedentes</li>
-        <li>Acompañamiento durante todo el proceso de incorporación</li>
+        <li>•	Análisis del puesto y la cultura organizacional</li>
+        <li>•	Búsqueda activa en múltiples canales</li>
+        <li>•	Evaluación de competencias técnicas y blandas</li>
+        <li>•	Verificación exhaustiva de antecedentes</li>
+        <li>•	Acompañamiento durante el proceso de incorporación</li>
+        <li>•	Uso de herramientas de IA para predecir desempeño y reducir rotación</li>
       </ul>
       
-      <p>Implementamos tecnologías de IA para analizar perfiles y predecir el éxito de los candidatos en tu empresa, reduciendo la rotación y aumentando la efectividad de las contrataciones.</p>
     `,
     benefits: [
-      "Reducción del tiempo de contratación en un 40%",
-      "Disminución de la rotación temprana",
-      "Mejor adaptación cultural de los nuevos empleados",
-      "Acceso a candidatos pasivos de alta calidad",
-      "Procesos de selección libres de sesgos",
+      "	Hasta 40% menos tiempo de contratación",
+      "	Menor rotación temprana",
+      "	Mejor adaptación cultural",
+      "	Acceso a talento pasivo de calidad",
+      "	Selección libre de sesgos",
     ],
   },
   {
-    id: "onboarding",
-    title: "Onboarding, Acompañamiento y Gestión de Transiciones Laborales",
-    description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
-    icon: <IoClipboard className="h-12 w-12 text-[#e4b53b]" />,
-    image: "/service/seleccion.jpg",
-    longDescription: `
-      <p>Nuestro servicio integral de Onboarding y Acompañamiento está diseñado para facilitar la integración de los nuevos empleados, asegurar su adaptación y alinear su desempeño con los objetivos organizacionales. Además, ofrecemos apoyo estratégico durante las transiciones laborales, como despidos, jubilaciones y pasividades, para asegurar un proceso respetuoso y sin impactos negativos en la organización y sus colaboradores.</p>
-      
-      <h3>Nuestro proceso incluye:</h3>
-      <ul>
-        <li><strong>Inducción Integral:</strong> Presentamos la cultura y objetivos de la empresa.</li>
-        <li><strong>Capacitación Específica:</strong> Entrenamos en herramientas y procesos internos.</li>
-        <li><strong>Entrevistas en Profundidad:</strong> Detectamos áreas de mejora tempranas.</li>
-        <li><strong>Reportes y Análisis:</strong> Evaluamos la integración y optimizamos procesos.</li>
-        <li><strong>Acompañamiento Personalizado:</strong> Seguimiento y planes de acción efectivos.</li>
-        <li><strong>Soporte en Desvinculación:</strong> Transiciones laborales respetuosas y guiadas.</li>
-        <li><strong>Aseguramos una experiencia positiva en cada etapa del ciclo laboral.</li>
-      </ul>
-      
-      <p>Con nuestro enfoque estructurado, aseguramos una transición más rápida y positiva para el nuevo colaborador, mejorando su rendimiento y compromiso.</p>
-    `,
-    benefits: [
-      "Reducción del tiempo de adaptación",
-      "Aumento en la satisfacción y compromiso del nuevo empleado",
-      "Mejora en la retención de nuevos talentos",
-      "Detección temprana de áreas de mejora con soluciones personalizadas",
-      "Procesos de salida más humanizados",
-      "Optimización de transiciones laborales"
-    ],
-  },
-  {
-    id: "talento",
+    id: "talento-capacitacion",
     title: "Gestión del Talento y Capacitación",
+    description: "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
+    icon: <UserCheck className="h-12 w-12 text-[#e4b53b]" />,
+    image: "/service/seleccion.jpg",
+   longDescription: `
+      <p>Desarrollamos soluciones integrales para atraer, evaluar y potenciar el talento interno, combinando inteligencia artificial, metodologías ágiles y una mirada estratégica adaptada a la cultura de cada organización.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
+      
+      <ul>
+        <li>•	Búsqueda activa de perfiles</li>
+        <li>•	Evaluación por competencias y ajuste cultural</li>
+        <li>•	Acompañamiento en el proceso de integración</li>
+        <li>•	Detección de necesidades formativas</li>
+        <li>•	Programas personalizados</li>
+        <li>•	Optimización del aprendizaje con herramientas digitales</li>
+      </ul>
+      
+    `,
+    benefits: [
+      "	Productividad y desempeño mejorados",
+      "	Desarrollo de habilidades clave",
+      "	Cultura de aprendizaje constante",
+     
+    ],
+  },
+  {
+    id: "compensaciones-legal",
+    title: "Compensaciones y Marco Legal",
     description: "Desarrollamos y optimizamos el potencial humano dentro de tu empresa.",
-    icon: <IoBulb className="h-12 w-12 text-[#e4b53b]" />,
+    icon: <FileText className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
     longDescription: `
-      <p>Conectamos empresas con los mejores profesionales mediante IA, innovación y estrategia para contrataciones efectivas y alineadas con la cultura organizacional.</p>
+      <p>Administramos de forma eficiente sueldos, beneficios, licencias y vacaciones, garantizando cumplimiento legal, trazabilidad y excelencia operativa en cada proceso.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
       
-      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li><strong>Atracción de talento:</strong> Búsqueda activa de los mejores candidatos.</li>
-        <li><strong>Evaluación precisa:</strong> Análisis de competencias técnicas y ajuste cultural.</li>
-        <li><strong>Optimización del proceso:</strong> IA y metodologías ágiles para mayor eficiencia.</li>
-        <li><strong>Éxito en la contratación:</strong> Acompañamiento en la incorporación.</li>
-        <li><strong>Evaluaciones personalizadas:</strong> Tests de competencias y psicotécnicos según necesidad.</li>
+        <li>•	Liquidación de sueldos y cargas sociales</li>
+        <li>•	Administración de beneficios e incentivos</li>
+        <li>•	Asesoramiento normativo laboral y fiscal</li>
+        <li>•	Planificación de licencias y ausencias</li>
+        <li>•	Informes de rotación, ausentismo y costos</li>
+        <li>•	Soporte en plataformas de payroll</li>
       </ul>
       
-      <p>Desarrollamos el talento de tu equipo y fomentamos una cultura de aprendizaje constante, mejorando tanto la productividad como la motivación.</p>
     `,
     benefits: [
-      "Mejora en la productividad y desempeño",
-      "Desarrollo de habilidades clave dentro de la empresa",
-      "Aumento de la retención de empleados",
+      "	Cumplimiento normativo sin riesgos",
+      "	Reducción de errores y tiempos",
+      "	Gestión profesional y transparente",
+  
     ],
   },
   {
-    id: "nomina",
-    title: "Gestión de Payroll",
+  id: "clima-cultura",
+    title: "Clima y Cultura Organizacional",
     description: "Gestionamos de manera eficiente los pagos y beneficios de tus empleados, asegurando el cumplimiento normativo.",
-    icon: <IoCash className="h-12 w-12 text-[#e4b53b]" />,
+    icon: <Shield className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
-    longDescription: `
-      <p>Optimizamos la administración de nómina y beneficios, asegurando precisión, cumplimiento normativo y eficiencia operativa.</p>
+  longDescription: `
+      <p>Medimos y fortalecemos el clima y la cultura de tu empresa para crear entornos laborales humanos, alineados y sostenibles. Acompañamos procesos de transformación con foco en la experiencia del colaborador.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
       
-      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li><strong>Procesamiento de nómina:</strong> Sueldos, bonificaciones e impuestos.</li>
-        <li><strong>Gestión de beneficios:</strong> Administración de incentivos y compensaciones.</li>
-        <li><strong>Cumplimiento normativo:</strong> Asesoramiento en regulaciones fiscales y laborales.</li>
-        <li><strong>Informes estratégicos:</strong> Análisis de ausentismo, rotación y costos laborales.</li>
-        <li><strong>Planificación de recursos:</strong> Gestión de horarios y vacaciones.</li>
-        <li><strong>Administración de plataformas:</strong> Monitoreo y optimización de herramientas payroll.</li>
+        <li>•	Encuestas de clima laboral</li>
+        <li>•	Análisis de resultados y propuestas de mejora</li>
+        <li>•	Iniciativas para el bienestar y la motivación</li>
+        <li>•	Mapeo y evolución de la cultura organizacional</li>
+        <li>•	Diseño de experiencias a lo largo del ciclo del colaborador</li>
       </ul>
       
-      <p>Optimiza la administración de tu personal y asegura el cumplimiento de las obligaciones fiscales y laborales de manera eficiente y sin errores.</p>
     `,
     benefits: [
-      "Cumplimiento normativo sin riesgos",
-      "Reducción de errores y optimización del tiempo",
-      "Mayor satisfacción y confianza de los empleados",
-      "Toma de decisiones basada en dato"
+      "	Mayor motivación y satisfacción",
+      "	Reducción de conflictos",
+      "	Aumento del compromiso y la productividad",
+      "	Cultura organizacional alineada",
+   
     ],
   },
   {
-    id: "clima-laboral",
-    title: "Gestión del Clima Laboral",
+   id: "onboarding-transacciones",
+    title: "Onboarding y Transiciones Laborales",
     description: "Monitoreamos y mejoramos el ambiente de trabajo, promoviendo el bienestar y la productividad.",
-    icon: <IoHappy className="h-12 w-12 text-[#e4b53b]" />,
+    icon: <ArrowRight className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
-    longDescription: `
-      <p>Nos encargamos de medir y gestionar el clima laboral dentro de tu empresa para asegurar un entorno positivo y saludable que impulse el bienestar de los empleados.</p>
+   longDescription: `
+      <p>Diseñamos procesos de incorporación y salida respetuosos, estructurados y centrados en las personas. Acompañamos a los colaboradores en cada transición para garantizar una experiencia positiva, sin impacto negativo.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
       
-      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Encuestas de clima laboral periódicas</li>
-        <li>Análisis de resultados y propuesta de acciones correctivas</li>
-        <li>Implementación de iniciativas para mejorar el bienestar</li>
-        <li>Fomento de la cultura de feedback y comunicación abierta</li>
+        <li>•	Plan de bienvenida e inducción</li>
+        <li>•	Seguimiento de la adaptación</li>
+        <li>•	Entrevistas de mejora y planes de acción</li>
+        <li>•	Soporte en desvinculaciones, jubilaciones o cambios de rol</li>
       </ul>
       
-      <p>Mejoramos las relaciones laborales y creamos un ambiente que favorezca la productividad y satisfacción general de los empleados.</p>
     `,
     benefits: [
-      "Mejora en la satisfacción y motivación de los empleados",
-      "Reducción de conflictos laborales",
-      "Aumento en la productividad organizacional",
+      "	Adaptación más rápida y efectiva",
+      "	Mayor compromiso desde el ingreso",
+      "	Retención de talento",
+      "	Procesos de salida más humanos y ordenados",
     ],
   },
   {
-    id: "desempeno",
-    title: "Evaluación del Desempeño",
+    id: "feedback-desempeno",
+    title: "Feedback y Desarrollo del Desempeño",
     description: "Medimos el rendimiento de los empleados y proporcionamos retroalimentación para su mejora continua.",
-    icon: <IoStatsChart className="h-12 w-12 text-[#e4b53b]" />,
+    icon: <LineChart className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
-    longDescription: `
-      <p>La evaluación de desempeño es crucial para medir y mejorar el rendimiento de los empleados. Implementamos procesos transparentes y objetivos para proporcionar una retroalimentación constructiva.</p>
+   longDescription: `
+      <p>Fomentamos una cultura de mejora continua con prácticas de feedback ágil y objetivos claros. Nuestro enfoque promueve el crecimiento individual y colectivo con mirada empática y foco en resultados.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
       
-      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Definición de KPIs claros y objetivos medibles</li>
-        <li>Evaluación 360 grados y retroalimentación de colegas y superiores</li>
-        <li>Planes de desarrollo basados en los resultados</li>
-        <li>Seguimiento continuo del desempeño individual y colectivo</li>
+        <li>•	Definición de objetivos alineados al negocio</li>
+        <li>•	Feedback regular y evaluaciones 360°</li>
+        <li>•	Planes de desarrollo personalizados</li>
+        <li>•	Seguimiento de avances y desempeño</li>
       </ul>
       
-      <p>Ayudamos a cada empleado a identificar áreas de mejora y maximizar su potencial, alineando sus esfuerzos con los objetivos de la empresa.</p>
     `,
     benefits: [
-      "Mejora continua del rendimiento de los empleados",
-      "Desarrollo de habilidades clave",
-      "Alineación con los objetivos de la empresa",
+      "	Mejora sostenida del rendimiento",
+      "	Desarrollo de habilidades clave",
+      "	Alineación con los objetivos organizacionales",
+  
     ],
   },
   {
-    id: "outsourcing",
-    title: "Encuestas de Salida y Análisis de Rotación",
+     id: "outsourcing",
+    title: "Outsourcing de Recursos Humanos",
     description: "Evaluamos las razones por las que los empleados dejan la empresa para reducir la rotación.",
-    icon: <IoExit className="h-12 w-12 text-[#e4b53b]" />,
+    icon: <Users className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/seleccion.jpg",
     longDescription: `
-      <p>Realizamos encuestas de salida a los empleados que dejan la organización para entender las razones detrás de su decisión. Estos datos nos permiten identificar áreas de mejora en la empresa y reducir la rotación.</p>
+      <p>Externalizamos procesos de RRHH con profesionalismo, agilidad y flexibilidad. Nos adaptamos a las necesidades y cultura de tu empresa para brindar soluciones eficientes y confiables.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
+
+
       
-      <h3>Nuestro proceso incluye:</h3>
       <ul>
-        <li>Entrevistas de salida confidenciales</li>
-        <li>Análisis detallado de las causas de rotación</li>
-        <li>Recomendaciones para mejorar el entorno laboral y los procesos internos</li>
-        <li>Implementación de estrategias para retener el talento</li>
+        <li>•	Administración de personal y documentación</li>
+        <li>•	Gestión de nómina, licencias y legajos</li>
+        <li>•	Coordinación de selección y onboarding</li>
+        <li>•	Asistencia legal y cumplimiento normativo</li>
+        <li>•	Reportes, indicadores y mejora continua</li>
       </ul>
       
-      <p>Te ayudamos a identificar patrones de rotación y mejorar las áreas que pueden estar afectando la retención de empleados clave.</p>
     `,
     benefits: [
-      "Reducción de la rotación de personal",
-      "Mejora en la retención de talento",
-      "Identificación de áreas críticas para la empresa",
+      " Ahorro de tiempo y recursos internos",
+      "	Gestión especializada y eficiente",
+      " Cumplimiento legal y trazabilidad asegurados",
     ],
   },
  {
-  id: "competencias",
-  title: "Evaluaciones Psicotécnicas y por Competencias",
+    id: "psicotecnica-competencias",
+    title: "Evaluaciones Psicotécnicas y por Competencias",
   description: "Evaluamos habilidades, rasgos conductuales y el encaje cultural para potenciar decisiones estratégicas de RRHH.",
-  icon: <IoAnalytics className="h-12 w-12 text-[#e4b53b]" />,
+  icon: <Brain className="h-12 w-12 text-[#e4b53b]" />,
   image: "/service/seleccion.jpg",
-  longDescription: `
-    <p>Nuestras evaluaciones psicotécnicas y por competencias permiten identificar las habilidades, características cognitivas y conductuales más relevantes para cada puesto.</p>
+ longDescription: `
+      <p>Aplicamos herramientas profesionales para evaluar habilidades, personalidad y competencias clave, con un enfoque integral que combina precisión técnica y mirada contextualizada.</p>
+      <br/>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
-    <h3>¿Qué ofrecemos?</h3>
-    <ul>
-      <li>Tests psicométricos y proyectivos aplicados por profesionales</li>
-      <li>Evaluaciones de competencias blandas y técnicas</li>
-      <li>Informes integrales para toma de decisiones de selección, promoción o desarrollo</li>
-      <li>Adaptación de las evaluaciones según el perfil requerido</li>
-    </ul>
 
-    <p>Este servicio permite predecir el desempeño laboral, optimizar los procesos de reclutamiento y asegurar el encaje entre los candidatos y la cultura organizacional.</p>
-  `,
-  benefits: [
-    "Mejora en la calidad de las contrataciones",
-    "Reducción de riesgos en la selección de personal",
-    "Identificación de potencial de desarrollo y liderazgo",
-  ],
-}
+      
+      <ul>
+        <li>•	Tests psicométricos y proyectivos</li>
+        <li>•	Evaluaciones de competencias blandas y técnicas</li>
+        <li>•	Informes claros y personalizados</li>
+        <li>•	Adaptación de herramientas al perfil requerido</li>
+        <li>•	Asesoramiento en decisiones de selección o desarrollo</li>
+      </ul>
+      
+    `,
+    benefits: [
+      " Mejor calidad en contrataciones y promociones",
+      "	Toma de decisiones más objetivas",
+      " Reducción de riesgos en procesos de RRHH",
+
+
+    ],
+  },
   
 ];
 
@@ -279,7 +300,7 @@ export default async function ServicePage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: service.longDescription }}
           ></div>
 
-          <div className="mt-8">
+          <div className="mt-4">
             <h3 className="text-xl font-semibold mb-4 text-[#6d381a]">Beneficios</h3>
             <ul className="space-y-2">
               {service.benefits.map((benefit, index) => (

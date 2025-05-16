@@ -13,26 +13,26 @@ export default function NosotrosPage() {
   const team = [
     {
       name: "Elisa Lo Gioco",
-      position: "Directora Fundadora",
-      bio: "Impulsora de la transformación digital en gestion de talento humano con más de 15 años de experiencia liderando equipos y procesos de cambio.",
+      position: "Directora Fundadora | Lic. en Relaciones del Trabajo | Coach Ontológica",
+      bio: "Impulsora de la transformación digital en la gestión del talento humano, con más de 15 años de experiencia liderando equipos, procesos de cambio y formación en habilidades humanas.",
       image: "/team/elisa.jpeg",
     },
     {
       name: "Manuela Rodríguez",
-      position: "Lic. Relaciones del trabajo",
-      bio: "Especialista en innovación en RRHH e integración de IA para potenciar la gestión del talento.",
+      position: "Lic. en Relaciones del Trabajo | Coach Ontológica",
+      bio: "Especialista en innovación en RRHH e integración de inteligencia artificial para potenciar la gestión de personas, con foco en el desarrollo humano y organizacional.",
       image: "/team/manuela.jpeg",
     },
     {
       name: "Maria Inés Arenas",
       position: "Psicologa",
-      bio: "Experta en desarrollo organizacional y bienestar en entornos laborales digitales.",
+      bio: "Experta en desarrollo organizacional, clima laboral y bienestar emocional en entornos laborales digitales.",
       image: "/team/maria.jpg",
     },
     {
       name: "Natalia Echazarreta",
       position: "Abogada",
-      bio: "Asesora legal en derecho laboral y nuevas formas de trabajo en la era digital.",
+      bio: "Asesora legal en derecho laboral, con foco en las nuevas formas de trabajo y los desafíos jurídicos de la era digital.",
       image: "/team/natalia.jpg",
     },
   ];
@@ -54,29 +54,22 @@ export default function NosotrosPage() {
             Nuestra Misión
           </h2>
           <p className="text-[#6d381a]/80 mb-4">
-            En Consultoría Elevas, nuestra misión es transformar los
-            departamentos de recursos humanos para enfrentar los desafíos de la
-            era digital. Ayudamos a las empresas a adaptar sus procesos de RRHH
-            a un entorno cada vez más automatizado, aprovechando la inteligencia
-            artificial y otras tecnologías emergentes para potenciar el talento
-            humano.
+            En Elevas, transformamos la gestión de Recursos Humanos para acompañar a las organizaciones en los desafíos de la era digital.
+
+Integramos inteligencia artificial y tecnologías emergentes para automatizar procesos y liberar el potencial humano, impulsando decisiones estratégicas, empatía y creatividad.
+
+Creemos que la tecnología es una aliada del factor humano, no su reemplazo.
+
           </p>
-          <p className="text-[#6d381a]/80 mb-4">
-            Creemos que la tecnología debe ser una aliada del factor humano, no
-            su reemplazo. Por eso, nos enfocamos en soluciones que automatizan
-            lo rutinario para que las personas puedan concentrarse en lo
-            verdaderamente importante: la creatividad, la empatía y la toma de
-            decisiones estratégicas.
-          </p>
+          
           <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-[#6d381a] mb-4 mt-8">
             Nuestra Visión
           </h2>
           <p className="text-[#6d381a]/80">
-            Aspiramos a ser líderes en la transformación digital de los recursos
-            humanos, creando organizaciones más humanas, eficientes y preparadas
-            para el futuro. Visualizamos un mundo laboral donde la tecnología
-            potencie las capacidades humanas y cree entornos de trabajo más
-            satisfactorios y productivos.
+            Aspiramos a ser referentes en la transformación digital del área de RRHH, promoviendo organizaciones más humanas, eficientes y preparadas para el futuro.
+
+Visualizamos un mundo laboral donde la tecnología amplifique las capacidades de las personas, fortalezca la cultura y genere entornos de trabajo motivadores y sostenibles.
+
           </p>
         </div>
         <div className="relative w-full h-[500px] ">
@@ -101,8 +94,7 @@ export default function NosotrosPage() {
               Innovación
             </h3>
             <p className="text-[#6d381a]/80">
-              Buscamos constantemente nuevas formas de mejorar los procesos de
-              RRHH utilizando tecnologías emergentes.
+              Incorporamos herramientas tecnológicas para mejorar procesos y anticiparnos al cambio.
             </p>
           </div>
           <div className="bg-[#f1df96] p-6 rounded-lg">
@@ -110,8 +102,7 @@ export default function NosotrosPage() {
               Humanismo
             </h3>
             <p className="text-[#6d381a]/80">
-              Ponemos a las personas en el centro de todas nuestras soluciones
-              tecnológicas.
+              Ponemos a las personas en el centro de cada solución.
             </p>
           </div>
           <div className="bg-[#f1df96] p-6 rounded-lg">
@@ -119,8 +110,7 @@ export default function NosotrosPage() {
               Adaptabilidad
             </h3>
             <p className="text-[#6d381a]/80">
-              Nos adaptamos rápidamente a los cambios del entorno laboral y
-              ayudamos a nuestros clientes a hacer lo mismo.
+              Ajustamos nuestras estrategias a la cultura y etapa de cada organización.
             </p>
           </div>
           <div className="bg-[#f1df96] p-6 rounded-lg">
@@ -128,8 +118,7 @@ export default function NosotrosPage() {
               Excelencia
             </h3>
             <p className="text-[#6d381a]/80">
-              Nos comprometemos con la calidad y la mejora continua en todos
-              nuestros servicios.
+              Buscamos calidad, claridad y mejora continua en cada proceso que acompañamos.
             </p>
           </div>
         </div>
