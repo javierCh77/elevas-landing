@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
 import PartnersSlider from "@/components/PartnersSlider";
-import CaseStudy from "@/components/CaseStudy";
+//import CaseStudy from "@/components/CaseStudy";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 
@@ -178,7 +178,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <CaseStudy /> {/* 🔥 Sección agregada aquí */}
+      {/* <CaseStudy />  */}
       {/* CTA Section */}
       <section className="py-16 bg-[#d98b5d]">
         <div className="px-4 md:px-6">
