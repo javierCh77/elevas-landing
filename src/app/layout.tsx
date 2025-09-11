@@ -5,8 +5,13 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
+import AIChatDemo from "@/components/AIChatDemo"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"]
+})
 
 export const metadata: Metadata = {
   title: {
@@ -14,9 +19,48 @@ export const metadata: Metadata = {
     default: "Consultoría Elevas - Soluciones de RRHH para el Futuro",
   },
   description:
-    "Consultoría especializada en RRHH con enfoque en la automatización e IA para preparar tu empresa para el futuro.",
-  keywords: ["RRHH", "recursos humanos", "consultoría", "automatización", "IA", "reclutamiento", "talento", "nómina"],
-    generator: 'v0.dev'
+    "Consultoría especializada en RRHH con enfoque en la automatización e IA para preparar tu empresa para el futuro. Atracción de talento, capacitación, nómina y outsourcing.",
+  keywords: ["RRHH", "recursos humanos", "consultoría", "automatización", "IA", "reclutamiento", "talento", "nómina", "outsourcing", "capacitación", "onboarding", "feedback", "desempeño", "clima laboral"],
+  authors: [{ name: "Consultoría Elevas" }],
+  creator: "Consultoría Elevas",
+  publisher: "Consultoría Elevas",
+  metadataBase: new URL('https://elevas.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    url: 'https://elevas.com',
+    siteName: 'Consultoría Elevas',
+    title: 'Consultoría Elevas - Soluciones de RRHH para el Futuro',
+    description: 'Consultoría especializada en RRHH con enfoque en la automatización e IA. Atracción de talento, capacitación, nómina y outsourcing.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Consultoría Elevas - RRHH del Futuro',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Consultoría Elevas - RRHH del Futuro',
+    description: 'Preparamos tu empresa para los desafíos de la digitalización en RRHH',
+    images: ['/twitter-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({
@@ -24,21 +68,53 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Consultoría Elevas",
+    "description": "Consultoría especializada en RRHH con enfoque en la automatización e IA para preparar tu empresa para el futuro",
+    "url": "https://elevas.com",
+    "logo": "https://elevas.com/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/elevas",
+      "https://twitter.com/elevas"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "Spanish"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Argentina"
+    },
+    "serviceType": [
+      "Recursos Humanos",
+      "Consultoría RRHH",
+      "Atracción de Talento",
+      "Capacitación",
+      "Outsourcing RRHH"
+    ]
+  }
+
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className={`${inter.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <AIChatDemo />
           </div>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
