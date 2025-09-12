@@ -41,26 +41,27 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0  z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-sm" : "bg-transparent"
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className=" flex w-full h-18 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="flex w-full h-20 items-center justify-between px-6 md:px-8 lg:px-12 max-w-7xl mx-auto">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src={logoelevas}
             alt="ELEVAS Logo"
-            width={72} // Define width y height correctamente
+            width={80}
             priority
-            style={{ height: "auto" }} // Evita el warning
+            style={{ height: "auto" }}
+            className="transition-all duration-300 hover:scale-105"
           />
         </Link>
-        <nav className="hidden md:flex gap-6 ">
+        <nav className="hidden md:flex gap-8 lg:gap-10">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`relative text-base font-medium transition-all duration-300 py-2 ${
                 isActive(link.href)
                   ? "text-[#e4b53b]"
                   : "text-[#6d381a] hover:text-[#e4b53b]"
@@ -69,7 +70,7 @@ export default function Header() {
               {link.label}
               {isActive(link.href) && (
                 <motion.div
-                  className="h-0.5 bg-[#e4b53b]"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#e4b53b] rounded-full"
                   layoutId="underline"
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
@@ -77,10 +78,10 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4 ">
+        <div className="flex items-center gap-4">
           <Button
             asChild
-            className="hidden md:flex bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white"
+            className="hidden md:flex bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
           >
             <Link href="/contacto">Contáctanos</Link>
           </Button>
@@ -89,19 +90,19 @@ export default function Header() {
               <Button
                 variant="outline"
                 size="icon"
-                className="md:hidden border-[#6d381a]"
+                className="md:hidden border-[#6d381a]/30 hover:border-[#e4b53b] hover:bg-[#e4b53b]/10 transition-all duration-300"
               >
                 <Menu className="h-5 w-5 text-[#6d381a]" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent className="bg-white">
-              <div className="flex flex-col gap-6 mt-8">
+            <SheetContent className="bg-white p-6">
+              <div className="flex flex-col gap-8 mt-12">
                 {links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-lg font-medium transition-colors ${
+                    className={`text-xl font-medium transition-all duration-300 py-2 ${
                       isActive(link.href)
                         ? "text-[#e4b53b]"
                         : "text-[#6d381a] hover:text-[#e4b53b]"
@@ -110,12 +111,12 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-              <Button
-  asChild
-  className="hidden md:flex bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white shadow-md hover:shadow-lg transition-shadow"
->
-  <Link href="/contacto">Contáctanos</Link>
-</Button>
+                <Button
+                  asChild
+                  className="mt-6 bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <Link href="/contacto">Contáctanos</Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

@@ -5,7 +5,6 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-import AIChatDemo from "@/components/AIChatDemo"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -111,7 +110,6 @@ export default function RootLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
-            <AIChatDemo />
           </div>
         </ThemeProvider>
       </body>

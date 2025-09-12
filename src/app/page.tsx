@@ -89,15 +89,16 @@ export default function Home() {
   return (
     <div className="flex flex-col ">
       {/* Hero Section */}
-      <section className="relative flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-30 px-6 md:px-12  overflow-hidden">
-        {/* Video de Fondo Optimizado */}
+      <section className="relative flex flex-col justify-center items-start text-left py-40 lg:py-48 px-8 md:px-16 lg:px-20 overflow-hidden min-h-screen">
+        {/* Video de Fondo Optimizado con Blur Sutil */}
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+          className="absolute top-0 left-0 w-full h-full object-cover z-[-3] opacity-85"
+          style={{ filter: 'blur(1px)' }}
           aria-hidden="true"
           role="presentation"
         >
@@ -106,45 +107,50 @@ export default function Home() {
           Tu navegador no soporta videos.
         </video>
         
-        {/* Minimalist AI Background */}
+        {/* Overlay negro translúcido suave */}
         <div 
-          className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-elevas-primary-50 via-white to-elevas-accent-50 z-[-2]"
+          className="absolute top-0 left-0 w-full h-full bg-black/30 z-[-2]"
+          aria-hidden="true"
+        />
+        
+        {/* Minimalist AI Background Fallback */}
+        <div 
+          className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-elevas-primary-50 via-white to-elevas-accent-50 z-[-4]"
           aria-hidden="true"
         />
 
         {/* Contenedor de Texto */}
         <motion.div
-          className="relative max-w-2xl space-y-6 z-10 elevas-fade-in"
+          className="relative max-w-4xl space-y-12 z-10 elevas-fade-in"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-light text-white leading-tight">
-            <span className="block font-extralight text-white">El futuro del</span>
-            <span className="block font-normal text-white">talento humano</span>
-            <span className="block font-medium text-white">está aquí</span>
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight">
+            <span className="block">El futuro del <span className="text-[#e4b53b]">talento</span></span>
+            <span className="block">está aquí</span>
           </h1>
-          <div className="text-lg md:text-xl text-white/90 leading-relaxed font-light max-w-2xl min-h-[80px] flex items-center">
+          <div className="text-xl md:text-2xl text-white/90 leading-relaxed font-light max-w-3xl min-h-[100px] flex items-center">
             <StreamingText 
               phrases={subtitles}
-              className="block text-white"
+              className="block text-white/90"
             />
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 mt-8">
+          <div className="flex flex-col sm:flex-row gap-4 mt-12 justify-start">
             <Button
               asChild
-              className="bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white shadow-sm font-normal px-8 py-3 elevas-minimal-lift"
+              className="bg-[#e4b53b] hover:bg-[#d4a332] text-white shadow-lg font-semibold px-10 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               <Link href="/servicios">
-                Explorar servicios <ArrowRight className="ml-2 h-4 w-4" />
+                Explorar servicios <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="border-[#6d381a]/30 text-[#6d381a] hover:bg-[#f1df96] font-normal px-8 py-3 elevas-minimal-lift"
+              className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm font-semibold px-10 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105"
             >
-              <Link href="/contacto">Conversemos</Link>
+              <Link href="/contacto">Hablar con un experto</Link>
             </Button>
           </div>
         </motion.div>

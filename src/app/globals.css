@@ -53,6 +53,11 @@
   --elevas-warning-500: #f59e0b;
   --elevas-warning-600: #d97706;
   
+  /* Coral - For emphasis */
+  --elevas-coral-400: #ff7875;
+  --elevas-coral-500: #ff6b6b;
+  --elevas-coral-600: #e55656;
+  
   /* shadcn/ui variables */
   --card: 0 0% 100%;
   --card-foreground: 0 0% 9%;

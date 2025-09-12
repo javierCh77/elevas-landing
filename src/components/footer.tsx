@@ -1,157 +1,176 @@
 import Link from "next/link";
-// import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
-import { Linkedin } from "lucide-react";
+import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
+
 export default function Footer() {
   return (
-    <footer className="bg-[#6d381a] text-white py-12">
-       <div className="px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-[#f1df96]">
-              Consultoría Elevas
+    <footer className="bg-[#6d381a] text-white py-16">
+      <div className="px-4 md:px-6 max-w-7xl mx-auto">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <h3 className="text-2xl font-bold mb-6 text-[#e4b53b]">
+              Elevas
             </h3>
-            <p className="text-white/80 mb-4">
-              Transformando el futuro de los recursos humanos con soluciones
-              innovadoras.
+            <p className="text-white/80 mb-6 leading-relaxed">
+              Especialistas en recursos humanos que combinan inteligencia artificial 
+              con experiencia humana para transformar tu organización.
             </p>
             <div className="flex space-x-4">
-              {/* <Link href="#" className="text-white hover:text-[#f1df96]">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="#" className="text-white hover:text-[#f1df96]">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-white hover:text-[#f1df96]">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link> */}
               <Link
                 href="https://www.linkedin.com/in/elevas-consulting-048271360/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#f1df96]"
+                className="p-2 bg-white/10 hover:bg-[#e4b53b] text-white hover:text-[#6d381a] rounded-lg transition-all duration-300"
               >
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </div>
           </div>
+          {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#f1df96]">
+            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b]">
               Servicios
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
                 <Link
-                  href="/servicios/reclutamiento"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/servicios"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
-                  Reclutamiento y Selección
+                  Atracción y Selección
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/talento"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/servicios"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
                   Gestión del Talento
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/nomina"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/servicios"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
-                  Administración de Nómina
+                  Compensaciones
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/clima-laboral"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/servicios"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
-                  Gestión del Clima Laboral
+                  Clima Organizacional
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
+                >
+                  Outsourcing RRHH
                 </Link>
               </li>
             </ul>
           </div>
+
+          {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#f1df96]">
-              Más Servicios
+            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b]">
+              Empresa
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
                 <Link
-                  href="/servicios/legal"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/nosotros"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
-                  Asesoría Legal
+                  Sobre Nosotros
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/desempeno"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/contacto"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
-                  Evaluación del Desempeño
+                  Contacto
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/servicios/outsourcing"
-                  className="text-white/80 hover:text-[#f1df96]"
+                  href="/blog"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
-                  Outsourcing
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/casos-exito"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
+                >
+                  Casos de Éxito
                 </Link>
               </li>
             </ul>
           </div>
+          {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#f1df96]">
+            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b]">
               Contacto
             </h3>
-            <address className="not-italic text-white/80 space-y-2">
-              <p>Las margaritas 289</p>
-              <p>Ushuaia, Tierra del Fuego</p>
-              <p>
-                Teléfono:{" "}
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-[#e4b53b] mt-0.5 flex-shrink-0" />
+                <div className="text-white/80">
+                  <p>Las Margaritas 289</p>
+                  <p>Ushuaia, Tierra del Fuego</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-[#e4b53b] flex-shrink-0" />
                 <a
                   href="tel:+5492901647084"
-                  className="text-white hover:text-[#f1df96] underline"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
                   +54 9 (2901) 647084
                 </a>
-              </p>
-              <p>
-                Email:{" "}
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-[#e4b53b] flex-shrink-0" />
                 <a
                   href="mailto:info@elevasconsulting.com"
-                  className="text-white hover:text-[#f1df96] underline"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
                   info@elevasconsulting.com
                 </a>
-              </p>
-            </address>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-12 p-2 border-t border-white/20 text-white text-sm flex items-center justify-center flex-col text-center">
-
-          <p>
-            &copy; {new Date().getFullYear()} Elevas. Todos los derechos
-            reservados.
-          </p>
-          <div>
-            <a
-              href="https://v0.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#f1df96] cursor-pointer hover:underline transition-transform transform hover:scale-105 duration-300"
-            >
-              Alba
-            </a>
-            <span> | Design & development</span>
+        
+        {/* Bottom Section */}
+        <div className="mt-16 pt-8 border-t border-white/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-white/80 text-sm">
+              &copy; {new Date().getFullYear()} Elevas Consulting. Todos los derechos reservados.
+            </p>
+            <div className="flex items-center gap-6 text-sm">
+              <Link 
+                href="/privacidad" 
+                className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
+              >
+                Política de Privacidad
+              </Link>
+              <Link 
+                href="/terminos" 
+                className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
+              >
+                Términos de Uso
+              </Link>
+            </div>
           </div>
         </div>
       </div>
