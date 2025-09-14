@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-[#6d381a] text-white py-16">
       <div className="px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <h3 className="text-2xl font-bold mb-6 text-[#e4b53b]">
@@ -24,6 +24,15 @@ export default function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
+              </Link>
+              <Link
+                href="https://www.instagram.com/elevasconsulting?igsh=amoydTk4cWJpbnM4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-white/10 hover:bg-[#e4b53b] text-white hover:text-[#6d381a] rounded-lg transition-all duration-300"
+              >
+                <Instagram className="h-5 w-5" />
+                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>

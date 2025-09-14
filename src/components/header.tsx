@@ -45,7 +45,7 @@ export default function Header() {
         isScrolled ? "bg-white/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="flex w-full h-20 items-center justify-between px-6 md:px-8 lg:px-12 max-w-7xl mx-auto">
+      <div className="flex w-full h-16 sm:h-20 items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src={logoelevas}
@@ -90,7 +90,7 @@ export default function Header() {
               <Button
                 variant="outline"
                 size="icon"
-                className="md:hidden border-[#6d381a]/30 hover:border-[#e4b53b] hover:bg-[#e4b53b]/10 transition-all duration-300"
+                className="md:hidden h-11 w-11 border-[#6d381a]/30 hover:border-[#e4b53b] hover:bg-[#e4b53b]/10 transition-all duration-300"
               >
                 <Menu className="h-5 w-5 text-[#6d381a]" />
                 <span className="sr-only">Toggle menu</span>

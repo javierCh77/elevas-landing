@@ -75,8 +75,8 @@ export default function RootLayout({
     "url": "https://elevas.com",
     "logo": "https://elevas.com/logo.png",
     "sameAs": [
-      "https://www.linkedin.com/company/elevas",
-      "https://twitter.com/elevas"
+      "https://www.linkedin.com/in/elevas-consulting-048271360/",
+      "https://www.instagram.com/elevasconsulting?igsh=amoydTk4cWJpbnM4"
     ],
     "contactPoint": {
       "@type": "ContactPoint",

@@ -46,12 +46,12 @@ const services = [
     title: "Atracción y Selección de Talento",
     description:
       "aaIdentificamos, atraemos y contratamos a los candidatos ideales para tu empresa.",
-    icon: <Users className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <Users className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/atraccion.jpg",
     longDescription: `
       <p>Conectamos tu empresa con el talento adecuado a través de un proceso ágil, tecnológico y profesional. Combinamos métodos tradicionales con inteligencia artificial para identificar, evaluar y atraer a los mejores perfiles, asegurando calidad y efectividad.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -78,12 +78,12 @@ const services = [
     title: "Gestión del Talento y Capacitación",
     description:
       "Facilitamos una integración exitosa y fluida de nuevos empleados a tu organización.",
-    icon: <UserCheck className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <UserCheck className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/gestion.jpg",
     longDescription: `
       <p>Desarrollamos soluciones integrales para atraer, evaluar y potenciar el talento interno, combinando inteligencia artificial, metodologías ágiles y una mirada estratégica adaptada a la cultura de cada organización.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -108,12 +108,12 @@ const services = [
     title: "Compensaciones y Marco Legal",
     description:
       "Desarrollamos y optimizamos el potencial humano dentro de tu empresa.",
-    icon: <FileText className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <FileText className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/marco.jpg",
     longDescription: `
       <p>Administramos de forma eficiente sueldos, beneficios, licencias y vacaciones, garantizando cumplimiento legal, trazabilidad y excelencia operativa en cada proceso.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -138,12 +138,12 @@ const services = [
     title: "Clima y Cultura Organizacional",
     description:
       "Gestionamos de manera eficiente los pagos y beneficios de tus empleados, asegurando el cumplimiento normativo.",
-    icon: <Shield className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <Shield className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/clima.jpg",
     longDescription: `
       <p>Medimos y fortalecemos el clima y la cultura de tu empresa para crear entornos laborales humanos, alineados y sostenibles. Acompañamos procesos de transformación con foco en la experiencia del colaborador.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -168,12 +168,12 @@ const services = [
     title: "Onboarding y Transiciones Laborales",
     description:
       "Monitoreamos y mejoramos el ambiente de trabajo, promoviendo el bienestar y la productividad.",
-    icon: <ArrowRight className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <ArrowRight className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/onboarding.jpg",
     longDescription: `
       <p>Diseñamos procesos de incorporación y salida respetuosos, estructurados y centrados en las personas. Acompañamos a los colaboradores en cada transición para garantizar una experiencia positiva, sin impacto negativo.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -197,12 +197,12 @@ const services = [
     title: "Feedback y Desarrollo del Desempeño",
     description:
       "Medimos el rendimiento de los empleados y proporcionamos retroalimentación para su mejora continua.",
-    icon: <LineChart className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <LineChart className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/feedback.jpg",
     longDescription: `
       <p>Fomentamos una cultura de mejora continua con prácticas de feedback ágil y objetivos claros. Nuestro enfoque promueve el crecimiento individual y colectivo con mirada empática y foco en resultados.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -225,12 +225,12 @@ const services = [
     title: "Outsourcing de Recursos Humanos",
     description:
       "Evaluamos las razones por las que los empleados dejan la empresa para reducir la rotación.",
-    icon: <Users className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <Users className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/outsourcing.jpg",
     longDescription: `
       <p>Externalizamos procesos de RRHH con profesionalismo, agilidad y flexibilidad. Nos adaptamos a las necesidades y cultura de tu empresa para brindar soluciones eficientes y confiables.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -254,12 +254,12 @@ const services = [
     title: "Evaluaciones Psicotécnicas y por Competencias",
     description:
       "Evaluamos habilidades, rasgos conductuales y el encaje cultural para potenciar decisiones estratégicas de RRHH.",
-    icon: <Brain className="h-12 w-12 text-elevas-gold-500" />,
+    icon: <Brain className="h-12 w-12 text-[#e4b53b]" />,
     image: "/service/competencias.jpg",
     longDescription: `
       <p>Aplicamos herramientas profesionales para evaluar habilidades, personalidad y competencias clave, con un enfoque integral que combina precisión técnica y mirada contextualizada.</p>
       <br/>
-      <h3 class="font-bold text-xl mb-1 text-elevas-brown-500">Nuestro proceso incluye:</h3>
+      <h3 class="font-bold text-xl mb-1 text-[#6d381a]">Nuestro proceso incluye:</h3>
 
 
       
@@ -289,89 +289,132 @@ export default async function ServicePage({ params }: Props) {
   }
 
   return (
-    <div className="px-4 py-12 md:px-20 md:py-20 bg-gradient-to-b from-white to-elevas-neutral-50">
-      <Link
-        href="/servicios"
-        className="inline-flex items-center text-elevas-brown-500 hover:text-elevas-gold-500 mb-8 transition-colors duration-200 group"
-      >
-        <ArrowLeft className="mr-2 h-4 w-4 group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
-        Volver a servicios
-      </Link>
+    <div className="px-4 py-16 md:py-24 bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        {/* Back Navigation */}
+        <Link
+          href="/servicios"
+          className="inline-flex items-center text-[#6d381a] hover:text-[#e4b53b] mb-8 transition-colors duration-300 group"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4 group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
+          Volver a servicios
+        </Link>
 
-      <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-start">
-        <div>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="p-3 bg-elevas-gold-100 rounded-xl border border-elevas-gold-200 shadow-sm">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="p-4 bg-[#f1df96]/50 rounded-xl border border-[#e4b53b]/20 shadow-sm">
               {service.icon}
             </div>
-            <div>
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl text-elevas-brown-500 mb-2">
-                {service.title}
-              </h1>
-              <div className="w-16 h-1 bg-gradient-to-r from-elevas-gold-500 to-elevas-orange-500"></div>
-            </div>
           </div>
-
-          <div
-            className="prose prose-lg max-w-none text-elevas-brown-500/80"
-            dangerouslySetInnerHTML={{ __html: service.longDescription }}
-          ></div>
-
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold mb-4 text-elevas-brown-500">
-              Beneficios
-            </h3>
-            <ul className="space-y-2">
-              {service.benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start">
-                  <div className="mr-2 mt-1 h-5 w-5 rounded-full bg-elevas-gold-500 flex items-center justify-center text-white text-xs">
-                    ✓
-                  </div>
-                  <span className="text-elevas-brown-500/80">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-8">
-            <Button
-              asChild
-              size="lg"
-              className="bg-elevas-gold-500 hover:bg-elevas-gold-600 text-white shadow-lg transform transition-transform hover:scale-105"
-            >
-              <Link href="/contacto">Solicitar información</Link>
-            </Button>
-          </div>
+          <h1 className="text-3xl md:text-4xl font-light text-[#6d381a] mb-3 elevas-slide-up">
+            {service.title.split(' ').slice(0, 2).join(' ')}{' '}
+            <span className="font-normal text-[#e4b53b] elevas-float">
+              {service.title.split(' ').slice(2).join(' ')}
+            </span>
+          </h1>
+          <div className="w-16 h-px bg-[#e4b53b] mx-auto mb-6 elevas-pulse-soft"></div>
+          <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed">
+            {service.description}
+          </p>
         </div>
 
-        <div className="flex ">
-          <div className="sticky top-20 ">
-            <div className="relative w-full h-[380px] md:h-[480px] lg:h-[600px] rounded-xl overflow-hidden shadow-xl">
+        {/* Main Content */}
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+          {/* Left Column - Content */}
+          <div className="space-y-8">
+            {/* Service Image - Mobile Only */}
+            <div className="lg:hidden relative w-full h-[300px] rounded-xl overflow-hidden shadow-lg">
               <Image
                 src={service.image}
                 alt={service.title}
                 fill
-                className="object-cover transition-transform duration-300 hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                sizes="100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
 
-            <div className="mt-8 p-6 bg-gradient-to-br from-elevas-gold-50 to-elevas-gold-100 rounded-xl border border-elevas-gold-200 shadow-lg">
-              <h3 className="text-xl font-semibold mb-4 text-elevas-brown-500">
-                ¿Necesitas este servicio?
+            {/* Description */}
+            <div
+              className="prose prose-lg max-w-none text-[#6d381a]/80 prose-headings:text-[#6d381a] prose-strong:text-[#6d381a] prose-li:text-[#6d381a]/80"
+              dangerouslySetInnerHTML={{ __html: service.longDescription }}
+            />
+
+            {/* Benefits */}
+            <div className="bg-[#f1df96]/20 rounded-xl p-6 border border-[#e4b53b]/10">
+              <h3 className="text-xl font-medium mb-6 text-[#6d381a]">
+                Beneficios principales
               </h3>
-              <p className="text-elevas-brown-500/80 mb-6 leading-relaxed">
-                Contáctanos hoy mismo para una consulta personalizada y descubre
-                cómo podemos ayudarte a optimizar tus procesos de RRHH.
-              </p>
+              <ul className="space-y-3">
+                {service.benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="mt-1 h-5 w-5 rounded-full bg-[#e4b53b] flex items-center justify-center text-white text-xs font-medium">
+                      ✓
+                    </div>
+                    <span className="text-[#6d381a]/80 leading-relaxed">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CTA Button - Mobile Only */}
+            <div className="lg:hidden">
               <Button
                 asChild
-                size="lg"
-                className="w-full bg-elevas-brown-500 hover:bg-elevas-brown-600 text-white shadow-lg transform transition-transform hover:scale-105"
+                className="w-full bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium py-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <Link href="/contacto">Contactar ahora</Link>
+                <Link href="/contacto">Solicitar información</Link>
               </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Sticky Sidebar */}
+          <div className="hidden lg:block">
+            <div className="sticky top-24 space-y-6">
+              {/* Service Image - Desktop */}
+              <div className="relative w-full h-[400px] rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  sizes="50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+
+              {/* Contact Card */}
+              <div className="p-6 bg-gradient-to-br from-[#f1df96]/30 to-[#e4b53b]/10 rounded-xl border border-[#e4b53b]/20 shadow-sm">
+                <h3 className="text-xl font-medium mb-4 text-[#6d381a]">
+                  ¿Te interesa este servicio?
+                </h3>
+                <p className="text-[#6d381a]/70 mb-6 leading-relaxed">
+                  Contáctanos para una consulta personalizada y descubre cómo podemos
+                  ayudarte a optimizar tus procesos de RRHH.
+                </p>
+                <Button
+                  asChild
+                  className="w-full bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <Link href="/contacto">Contactar ahora</Link>
+                </Button>
+              </div>
+
+              {/* Additional Info Card */}
+              <div className="p-6 bg-white rounded-xl border border-[#6d381a]/10 shadow-sm">
+                <h4 className="font-medium text-[#6d381a] mb-3">¿Necesitas más información?</h4>
+                <p className="text-sm text-[#6d381a]/60 mb-4">
+                  Explora todos nuestros servicios de RRHH y encuentra la solución perfecta para tu empresa.
+                </p>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full border-[#6d381a]/20 text-[#6d381a] hover:bg-[#e4b53b]/10 hover:border-[#e4b53b]"
+                >
+                  <Link href="/servicios">Ver todos los servicios</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

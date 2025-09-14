@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <div className="flex flex-col ">
       {/* Hero Section */}
-      <section className="relative flex flex-col justify-center items-start text-left py-40 lg:py-48 px-8 md:px-16 lg:px-20 overflow-hidden min-h-screen">
+      <section className="relative flex flex-col justify-center items-start text-left py-16 md:py-32 lg:py-40 xl:py-48 px-6 md:px-16 lg:px-20 overflow-hidden min-h-screen">
         {/* Video de Fondo Optimizado con Blur Sutil */}
         <video
           autoPlay
@@ -126,7 +126,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
             <span className="block">El futuro del <span className="text-[#e4b53b]">talento</span></span>
             <span className="block">está aquí</span>
           </h1>
@@ -139,7 +139,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 mt-12 justify-start">
             <Button
               asChild
-              className="bg-[#e4b53b] hover:bg-[#d4a332] text-white shadow-lg font-semibold px-10 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="bg-[#e4b53b] hover:bg-[#d4a332] text-white shadow-lg font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               <Link href="/servicios">
                 Explorar servicios <ArrowRight className="ml-2 h-5 w-5" />
@@ -148,7 +148,7 @@ export default function Home() {
             <Button
               asChild
               variant="outline"
-              className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm font-semibold px-10 py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105"
+              className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105"
             >
               <Link href="/contacto">Hablar con un experto</Link>
             </Button>

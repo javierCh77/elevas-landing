@@ -12,30 +12,9 @@ interface Message {
   content: string
   isBot: boolean
   timestamp: Date
+  showContactButton?: boolean
 }
 
-const predefinedResponses = [
-  {
-    trigger: ["hola", "hello", "buenos días", "buenas tardes"],
-    response: "¡Hola! Soy el asistente de IA de Elevas. ¿En qué puedo ayudarte con tus necesidades de RRHH? 🤖"
-  },
-  {
-    trigger: ["servicios", "qué hacen", "que ofrecen"],
-    response: "Ofrecemos servicios inteligentes de RRHH: selección de talento con IA, gestión de desempeño, compensaciones, clima organizacional y más. ¿Te interesa algún servicio específico?"
-  },
-  {
-    trigger: ["precios", "costo", "cotización"],
-    response: "Nuestros servicios se adaptan a cada organización. Te invito a agendar una consulta gratuita donde analizaremos tus necesidades específicas y te daremos una propuesta personalizada."
-  },
-  {
-    trigger: ["ia", "inteligencia artificial", "tecnología"],
-    response: "Utilizamos IA avanzada para optimizar procesos de RRHH: análisis predictivo de rotación, matching inteligente de candidatos, y automatización de tareas repetitivas, siempre manteniendo el toque humano."
-  },
-  {
-    trigger: ["contacto", "reunión", "hablar"],
-    response: "¡Perfecto! Puedes contactarnos directamente o agendar una reunión. Nuestro equipo estará encantado de conocer tu empresa y diseñar soluciones a medida."
-  }
-]
 
 interface AIChatDemoProps {
   embedded?: boolean
@@ -47,14 +26,39 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
   const [inputValue, setInputValue] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" })
+  const handleContactClick = () => {
+    // Navigate to contact page
+    window.location.href = '/contacto'
+  }
+
+  const handleWhatsAppClick = () => {
+    // Open WhatsApp in new tab
+    const whatsappNumber = '+5492901647084'
+    const message = encodeURIComponent('Hola! Me interesa conocer más sobre los servicios de Elevas.')
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
+    window.open(whatsappUrl, '_blank')
+  }
+
+  const scrollToBottom = (force: boolean = false) => {
+    if (messagesEndRef.current) {
+      if (force) {
+        messagesEndRef.current.scrollIntoView({ behavior: "instant", block: "end" })
+      } else {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" })
+      }
+    }
   }
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages, isTyping])
+    // Solo hacer scroll automático cuando se agregan mensajes o cambia isTyping
+    const timeoutId = setTimeout(() => {
+      scrollToBottom()
+    }, 100)
+
+    return () => clearTimeout(timeoutId)
+  }, [messages.length, isTyping])
 
   useEffect(() => {
     if ((embedded || isOpen) && messages.length === 0) {
@@ -65,41 +69,64 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
     }
   }, [embedded, isOpen, messages.length])
 
-  const addBotMessage = (content: string) => {
+  const addBotMessage = (content: string, showContactButton?: boolean) => {
     const botMessage: Message = {
-      id: Date.now().toString() + "-bot",
+      id: crypto.randomUUID() + "-bot",
       content,
       isBot: true,
-      timestamp: new Date()
+      timestamp: new Date(),
+      showContactButton
     }
     setMessages(prev => [...prev, botMessage])
-    // Scroll adicional con delay para asegurar que se muestre
-    setTimeout(() => scrollToBottom(), 100)
   }
 
   const addUserMessage = (content: string) => {
     const userMessage: Message = {
-      id: Date.now().toString() + "-user",
+      id: crypto.randomUUID() + "-user",
       content,
       isBot: false,
       timestamp: new Date()
     }
     setMessages(prev => [...prev, userMessage])
-    // Scroll inmediato para mostrar mensaje del usuario
-    setTimeout(() => scrollToBottom(), 50)
   }
 
-  const getBotResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase()
-    
-    for (const responseData of predefinedResponses) {
-      if (responseData.trigger.some(trigger => input.includes(trigger))) {
-        return responseData.response
+  const getBotResponse = async (userInput: string): Promise<{response: string, showContactButton?: boolean}> => {
+    try {
+      // Construir historial de conversación para el API
+      const conversationHistory = messages.map(msg => ({
+        role: msg.isBot ? 'assistant' : 'user',
+        content: msg.content
+      }))
+
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userInput,
+          conversationHistory: conversationHistory
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        return {
+          response: data.error || "Lo siento, hubo un error procesando tu consulta."
+        }
+      }
+
+      return {
+        response: data.response,
+        showContactButton: data.showContactButton
+      }
+    } catch (error) {
+      console.error('Error calling chat API:', error)
+      return {
+        response: "Lo siento, hubo un error de conexión. Por favor, intenta nuevamente."
       }
     }
-    
-    // Respuesta por defecto
-    return "Esa es una excelente pregunta. Te recomiendo contactar directamente con nuestro equipo para una respuesta más detallada. ¿Te gustaría agendar una consulta?"
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -107,19 +134,35 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
     if (!inputValue.trim()) return
 
     const userInput = inputValue.trim()
+
+    // Validar límite de 300 caracteres
+    if (userInput.length > 300) {
+      alert("El mensaje no puede exceder los 300 caracteres")
+      inputRef.current?.focus()
+      return
+    }
+
     setInputValue("")
-    
+
+    // Mantener el foco en el input
+    setTimeout(() => {
+      inputRef.current?.focus()
+    }, 0)
+
     // Agregar mensaje del usuario
     addUserMessage(userInput)
-    
+
     // Simular "typing"
     setIsTyping(true)
-    
-    setTimeout(() => {
+
+    try {
+      const botResponse = await getBotResponse(userInput)
       setIsTyping(false)
-      const botResponse = getBotResponse(userInput)
-      addBotMessage(botResponse)
-    }, 1500)
+      addBotMessage(botResponse.response, botResponse.showContactButton)
+    } catch (error) {
+      setIsTyping(false)
+      addBotMessage("Lo siento, hubo un error procesando tu consulta. Por favor, intenta nuevamente.")
+    }
   }
 
   if (embedded) {
@@ -148,7 +191,7 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
           </CardHeader>
           
           <CardContent className="p-0 flex flex-col">
-            <div className="overflow-y-auto p-6 space-y-4 h-80 max-h-80 scrollbar-thin scrollbar-thumb-[#e4b53b] scrollbar-track-[#f1df96]/30">
+            <div className="overflow-y-auto p-6 space-y-4 h-64 sm:h-80 max-h-64 sm:max-h-80 scrollbar-thin scrollbar-thumb-[#e4b53b] scrollbar-track-[#f1df96]/30">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -172,6 +215,22 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                       }`}
                     >
                       {message.content}
+                      {message.isBot && message.showContactButton && (
+                        <div className="mt-3 space-y-2">
+                          <Button
+                            onClick={handleContactClick}
+                            className="bg-[#6d381a] hover:bg-[#6d381a]/90 text-white text-sm px-4 py-2 rounded-lg w-full"
+                          >
+                            📝 Completar formulario
+                          </Button>
+                          <Button
+                            onClick={handleWhatsAppClick}
+                            className="bg-[#25d366] hover:bg-[#25d366]/90 text-white text-sm px-4 py-2 rounded-lg w-full"
+                          >
+                            💬 WhatsApp directo
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -204,11 +263,13 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
             <div className="p-6 border-t border-[#6d381a]/10 bg-[#f1df96]/20">
               <form onSubmit={handleSubmit} className="flex gap-3">
                 <Input
+                  ref={inputRef}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Pregúntame sobre nuestros servicios de RRHH..."
+                  placeholder="Pregúntame sobre nuestros servicios de RRHH... (máx. 300 caracteres)"
                   className="flex-1 text-sm border-[#6d381a]/20 focus:border-[#e4b53b]"
                   disabled={isTyping}
+                  maxLength={300}
                 />
                 <Button
                   type="submit"
@@ -291,6 +352,24 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                           }`}
                         >
                           {message.content}
+                          {message.isBot && message.showContactButton && (
+                            <div className="mt-2 space-y-1">
+                              <Button
+                                onClick={handleContactClick}
+                                size="sm"
+                                className="bg-elevas-accent-500 hover:bg-elevas-accent-600 text-white text-xs px-3 py-1 w-full"
+                              >
+                                📝 Completar formulario
+                              </Button>
+                              <Button
+                                onClick={handleWhatsAppClick}
+                                size="sm"
+                                className="bg-[#25d366] hover:bg-[#25d366]/90 text-white text-xs px-3 py-1 w-full"
+                              >
+                                💬 WhatsApp directo
+                              </Button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </motion.div>
@@ -323,11 +402,13 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                 <div className="p-4 border-t border-elevas-neutral-100">
                   <form onSubmit={handleSubmit} className="flex gap-2">
                     <Input
+                      ref={inputRef}
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
-                      placeholder="Escribe tu consulta..."
+                      placeholder="Escribe tu consulta... (máx. 300 caracteres)"
                       className="flex-1 text-sm"
                       disabled={isTyping}
+                      maxLength={300}
                     />
                     <Button
                       type="submit"
@@ -346,7 +427,7 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
       </AnimatePresence>
       
       {/* Chat Button - Fixed at bottom right */}
-      <div className="fixed bottom-4 right-4">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6">
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
