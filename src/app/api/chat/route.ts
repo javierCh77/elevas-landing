@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
+import type { ChatCompletionMessageParam } from 'openai/resources'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
-const SYSTEM_PROMPT = `Eres un **asesor comercial experto en Recursos Humanos** que trabaja para Elevas, una consultora especializada en RRHH.
-Tu misión es atender a potenciales clientes, entender sus necesidades específicas y guiar la conversación hacia un cierre comercial, transmitiendo **calidez y humanidad**.
+const SYSTEM_PROMPT = `Soy **EVA**, el agente de inteligencia artificial de Elevas Consulting, especializada en recursos humanos.
+Mi nombre es EVA (derivado de ELEVAs) y mi misión es atender a potenciales clientes, entender sus necesidades específicas y guiar la conversación hacia un cierre comercial, transmitiendo **calidez y humanidad**.
+
+🤖 **PRESENTACIÓN PERSONAL**: Siempre me presento como "Hola, soy EVA, el agente de IA de Elevas" en el primer contacto.
 
 ### INSTRUCCIONES CRÍTICAS
 - **LEE EL HISTORIAL**: Recordá siempre el contexto previo de la conversación. NO repitas saludos ni preguntas ya hechas.
@@ -21,6 +24,8 @@ Tu misión es atender a potenciales clientes, entender sus necesidades específi
 ### Estilo Conversacional
 - **Humano y cercano** - nunca robótico
 - **Consultivo** - enfocate en entender antes que vender
+- **Identificación clara**: Siempre firma como "EVA" y menciona que soy el agente de IA de Elevas
+- **Personalidad amigable**: Soy profesional pero accesible, con un toque de modernidad por ser IA
 - **Adaptable** - ajustá el tono según el cliente (formal/informal)
 - **Propositivo** - siempre ofrecé próximos pasos
 
@@ -73,16 +78,24 @@ Solo úsala cuando:
 - **IMPORTANTE**: Dice "quiero contactarme", "cómo los contacto", "quiero hablar con ustedes"
 - Cualquier expresión de querer establecer contacto directo
 
-### Detección de Intención de Contacto - MUY IMPORTANTE
-Cuando el usuario diga cualquiera de estas frases, SIEMPRE incluí [MOSTRAR_CONTACTO]:
-- "quiero contactarme"
-- "cómo los contacto"
-- "quiero hablar con ustedes"
-- "necesito información"
-- "me interesa"
-- "quiero saber más"
-- "quisiera una reunión"
-- "pueden llamarme"
+### 🚨 DETECCIÓN DE INTENCIÓN DE CONTACTO - OBLIGATORIO 🚨
+⚠️ **REGLA CRÍTICA**: Cuando el usuario diga CUALQUIERA de estas frases, DEBES incluir [MOSTRAR_CONTACTO] al final:
+
+**FRASES EXACTAS QUE REQUIEREN [MOSTRAR_CONTACTO]:**
+- "quiero contactarme" - [MOSTRAR_CONTACTO]
+- "cómo los contacto" - [MOSTRAR_CONTACTO]
+- "quiero hablar con ustedes" - [MOSTRAR_CONTACTO]
+- "necesito información" - [MOSTRAR_CONTACTO]
+- "me interesa" - [MOSTRAR_CONTACTO]
+- "quiero saber más" - [MOSTRAR_CONTACTO]
+- "quisiera una reunión" - [MOSTRAR_CONTACTO]
+- "pueden llamarme" - [MOSTRAR_CONTACTO]
+- "contactarme" - [MOSTRAR_CONTACTO]
+- "comunicarse" - [MOSTRAR_CONTACTO]
+- "reunión" - [MOSTRAR_CONTACTO]
+- "consulta" - [MOSTRAR_CONTACTO]
+
+⚠️ **SIN EXCEPCIONES**: Si detectás intención de contacto, SIEMPRE agregá [MOSTRAR_CONTACTO]
 
 ### Reglas de Oro
 - **NUNCA repitas** saludos o preguntas ya hechas
@@ -108,7 +121,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Construir historial de mensajes
-    const messages = [
+    const messages: ChatCompletionMessageParam[] = [
       {
         role: "system",
         content: SYSTEM_PROMPT
@@ -132,17 +145,77 @@ export async function POST(req: NextRequest) {
       messages: messages,
       max_tokens: 500,
       temperature: 0.7,
+      stream: true,
     })
 
-    const aiResponse = completion.choices[0]?.message?.content || "Lo siento, no pude procesar tu consulta. ¿Podrías intentarlo nuevamente?"
+    // Crear un stream de respuesta
+    const encoder = new TextEncoder()
+    let fullResponse = ""
 
-    // Detectar si debe mostrar botón de contacto
-    const shouldShowContact = aiResponse.includes('[MOSTRAR_CONTACTO]')
-    const cleanResponse = aiResponse.replace('[MOSTRAR_CONTACTO]', '').trim()
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of completion) {
+            const content = chunk.choices[0]?.delta?.content || ""
+            if (content) {
+              fullResponse += content
 
-    return NextResponse.json({
-      response: cleanResponse,
-      showContactButton: shouldShowContact
+              // Enviar cada chunk al frontend
+              const data = JSON.stringify({
+                type: 'chunk',
+                content: content
+              })
+              controller.enqueue(encoder.encode(`data: ${data}\n\n`))
+
+              // Agregar un pequeño delay para controlar la velocidad
+              await new Promise(resolve => setTimeout(resolve, 85))
+            }
+          }
+
+          // Al final, detectar si debe mostrar botón de contacto
+          let shouldShowContact = fullResponse.includes('[MOSTRAR_CONTACTO]')
+
+          // Sistema de detección adicional si la IA no agregó el tag
+          if (!shouldShowContact) {
+            const contactKeywords = [
+              'contactar', 'contacto', 'comunicar', 'hablar', 'reunión', 'consulta',
+              'información', 'interesa', 'cotización', 'presupuesto', 'llamar',
+              'whatsapp', 'email', 'formulario', 'coordinemos', 'reunirnos'
+            ]
+
+            const messageWords = message.toLowerCase()
+            shouldShowContact = contactKeywords.some(keyword => messageWords.includes(keyword))
+          }
+
+          const cleanResponse = fullResponse.replace('[MOSTRAR_CONTACTO]', '').trim()
+
+          // Enviar señal de finalización con información de contacto
+          const finalData = JSON.stringify({
+            type: 'complete',
+            showContactButton: shouldShowContact,
+            fullResponse: cleanResponse
+          })
+          controller.enqueue(encoder.encode(`data: ${finalData}\n\n`))
+
+          controller.close()
+        } catch (error) {
+          console.error('Streaming error:', error)
+          const errorData = JSON.stringify({
+            type: 'error',
+            error: 'Error interno del servidor'
+          })
+          controller.enqueue(encoder.encode(`data: ${errorData}\n\n`))
+          controller.close()
+        }
+      }
+    })
+
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
     })
   } catch (error) {
     console.error('OpenAI API error:', error)

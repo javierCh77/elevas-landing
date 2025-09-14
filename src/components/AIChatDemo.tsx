@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Send, Bot, User, X, MessageCircle } from "lucide-react"
+import { Send, User, X, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import Image from "next/image"
 
 interface Message {
   id: string
@@ -24,9 +25,9 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const welcomeMessageSent = useRef(false)
 
   const handleContactClick = () => {
     // Navigate to contact page
@@ -36,38 +37,75 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
   const handleWhatsAppClick = () => {
     // Open WhatsApp in new tab
     const whatsappNumber = '+5492901647084'
-    const message = encodeURIComponent('Hola! Me interesa conocer más sobre los servicios de Elevas.')
+    const message = encodeURIComponent('Hola! Estuve hablando con EVA y me interesa conocer más sobre los servicios de Elevas.')
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
     window.open(whatsappUrl, '_blank')
   }
 
   const scrollToBottom = (force: boolean = false) => {
     if (messagesEndRef.current) {
-      if (force) {
-        messagesEndRef.current.scrollIntoView({ behavior: "instant", block: "end" })
+      // Encontrar el contenedor del chat específico
+      const chatContainer = messagesEndRef.current.closest('[data-chat-container]')
+
+      if (chatContainer) {
+        // Scroll dentro del contenedor del chat, no de la página
+        chatContainer.scrollTop = chatContainer.scrollHeight
       } else {
-        messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" })
+        // Fallback al comportamiento anterior pero más controlado
+        if (force) {
+          messagesEndRef.current.scrollIntoView({
+            behavior: "instant",
+            block: "nearest",
+            inline: "nearest"
+          })
+        } else {
+          messagesEndRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest"
+          })
+        }
       }
     }
   }
 
   useEffect(() => {
-    // Solo hacer scroll automático cuando se agregan mensajes o cambia isTyping
+    // Solo hacer scroll automático cuando se agregan mensajes NUEVOS
     const timeoutId = setTimeout(() => {
       scrollToBottom()
     }, 100)
 
     return () => clearTimeout(timeoutId)
-  }, [messages.length, isTyping])
+  }, [messages.length])
 
   useEffect(() => {
-    if ((embedded || isOpen) && messages.length === 0) {
+    if ((embedded || isOpen) && messages.length === 0 && !welcomeMessageSent.current) {
+      welcomeMessageSent.current = true
       // Mensaje de bienvenida automático
       setTimeout(() => {
-        addBotMessage("¡Hola! 👋 Soy tu asistente de IA para consultas sobre RRHH. ¿En qué puedo ayudarte?")
+        addBotMessage("¡Hola! 👋 Soy EVA, el agente de IA de Elevas Consulting. Estoy especializada en recursos humanos y estoy aquí para ayudarte. ¿Qué te gustaría saber?")
       }, 1000)
     }
   }, [embedded, isOpen, messages.length])
+
+  // Efecto para scroll durante streaming - solo si el usuario está cerca del final
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1]
+      if (lastMessage.isBot && lastMessage.content) {
+        // Solo hacer scroll si el usuario está cerca del final del chat
+        const chatContainer = messagesEndRef.current?.parentElement
+        if (chatContainer) {
+          const { scrollTop, scrollHeight, clientHeight } = chatContainer
+          const isNearBottom = scrollHeight - scrollTop - clientHeight < 100
+
+          if (isNearBottom) {
+            scrollToBottom()
+          }
+        }
+      }
+    }
+  }, [messages])
 
   const addBotMessage = (content: string, showContactButton?: boolean) => {
     const botMessage: Message = {
@@ -90,7 +128,7 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
     setMessages(prev => [...prev, userMessage])
   }
 
-  const getBotResponse = async (userInput: string): Promise<{response: string, showContactButton?: boolean}> => {
+  const getBotResponseStream = async (userInput: string, onChunk: (chunk: string) => void): Promise<{response: string, showContactButton?: boolean}> => {
     try {
       // Construir historial de conversación para el API
       const conversationHistory = messages.map(msg => ({
@@ -109,17 +147,51 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
         }),
       })
 
-      const data = await response.json()
-
       if (!response.ok) {
-        return {
-          response: data.error || "Lo siento, hubo un error procesando tu consulta."
+        throw new Error('Network response was not ok')
+      }
+
+      const reader = response.body?.getReader()
+      const decoder = new TextDecoder()
+
+      if (!reader) {
+        throw new Error('No reader available')
+      }
+
+      let fullResponse = ""
+      let showContactButton = false
+
+      while (true) {
+        const { done, value } = await reader.read()
+
+        if (done) break
+
+        const chunk = decoder.decode(value)
+        const lines = chunk.split('\n')
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const data = JSON.parse(line.slice(6))
+
+              if (data.type === 'chunk') {
+                fullResponse += data.content
+                onChunk(data.content)
+              } else if (data.type === 'complete') {
+                showContactButton = data.showContactButton
+              } else if (data.type === 'error') {
+                throw new Error(data.error)
+              }
+            } catch {
+              // Ignorar errores de parsing de chunks malformados
+            }
+          }
         }
       }
 
       return {
-        response: data.response,
-        showContactButton: data.showContactButton
+        response: fullResponse,
+        showContactButton: showContactButton
       }
     } catch (error) {
       console.error('Error calling chat API:', error)
@@ -152,16 +224,46 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
     // Agregar mensaje del usuario
     addUserMessage(userInput)
 
-    // Simular "typing"
-    setIsTyping(true)
+    // Scroll suave al nuevo mensaje del usuario
+    setTimeout(() => scrollToBottom(), 50)
+
+    // Inicializar ID del mensaje del bot
+    const botMessageId = Date.now().toString()
 
     try {
-      const botResponse = await getBotResponse(userInput)
-      setIsTyping(false)
-      addBotMessage(botResponse.response, botResponse.showContactButton)
-    } catch (error) {
-      setIsTyping(false)
-      addBotMessage("Lo siento, hubo un error procesando tu consulta. Por favor, intenta nuevamente.")
+
+      // Crear mensaje del bot vacío para el streaming
+      const botMessage: Message = {
+        id: botMessageId,
+        content: "",
+        isBot: true,
+        timestamp: new Date(),
+        showContactButton: false
+      }
+
+      setMessages(prev => [...prev, botMessage])
+
+      const botResponse = await getBotResponseStream(userInput, (chunk: string) => {
+        // Actualizar el mensaje del bot con cada chunk
+        setMessages(prev => prev.map(msg =>
+          msg.id === botMessageId
+            ? { ...msg, content: msg.content + chunk }
+            : msg
+        ))
+      })
+
+      // Actualizar con la información de contacto final
+      setMessages(prev => prev.map(msg =>
+        msg.id === botMessageId
+          ? { ...msg, showContactButton: botResponse.showContactButton }
+          : msg
+      ))
+    } catch {
+      setMessages(prev => prev.map(msg =>
+        msg.id === botMessageId
+          ? { ...msg, content: "Lo siento, hubo un error procesando tu consulta. Por favor, intenta nuevamente." }
+          : msg
+      ))
     }
   }
 
@@ -173,25 +275,32 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <Card className="w-full max-w-4xl mx-auto shadow-xl border-[#6d381a]/20 bg-white">
+        <Card className="w-full max-w-4xl mx-auto border-[#6d381a]/10 bg-white rounded-2xl overflow-hidden elevas-shadow-xl elevas-lift">
           <CardHeader className="border-b border-[#6d381a]/10 bg-gradient-to-r from-[#f1df96]/30 to-[#e4b53b]/10">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-[#e4b53b] rounded-full">
-                <Bot className="h-5 w-5 text-white" />
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-[#e4b53b]/10 border-2 border-[#e4b53b]/30 elevas-shadow-sm">
+                <Image
+                  src="/avatar.png"
+                  alt="EVA - Agente IA de Elevas"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
               <div>
-                <CardTitle className="text-lg font-medium text-[#6d381a]">
-                  Asistente IA Elevas
+                <CardTitle className="text-lg font-medium text-[#6d381a] elevas-heading">
+                  EVA - Agente IA de Elevas
                 </CardTitle>
-                <p className="text-sm text-[#6d381a]/70">
-                  Especializado en RRHH • Disponible 24/7
+                <p className="text-sm text-[#6d381a]/70 elevas-body">
+                  Especializada en RRHH • Disponible 24/7
                 </p>
               </div>
             </div>
           </CardHeader>
           
           <CardContent className="p-0 flex flex-col">
-            <div className="overflow-y-auto p-6 space-y-4 h-64 sm:h-80 max-h-64 sm:max-h-80 scrollbar-thin scrollbar-thumb-[#e4b53b] scrollbar-track-[#f1df96]/30">
+            <div className="overflow-y-auto p-6 space-y-4 h-64 sm:h-80 max-h-64 sm:max-h-80 scrollbar-thin scrollbar-thumb-[#e4b53b] scrollbar-track-[#f1df96]/30" data-chat-container>
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -200,9 +309,15 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                   className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   <div className={`flex items-start gap-3 max-w-[80%] ${message.isBot ? 'flex-row' : 'flex-row-reverse'}`}>
-                    <div className={`p-2 rounded-full ${message.isBot ? 'bg-[#f1df96]' : 'bg-[#e4b53b]/20'}`}>
+                    <div className={`${message.isBot ? 'w-8 h-8 rounded-full overflow-hidden bg-[#e4b53b]/10 border border-[#e4b53b]/30 flex-shrink-0' : 'p-2 rounded-full bg-[#e4b53b]/20 flex-shrink-0'}`}>
                       {message.isBot ? (
-                        <Bot className="h-4 w-4 text-[#e4b53b]" />
+                        <Image
+                          src="/avatar.png"
+                          alt="EVA"
+                          width={32}
+                          height={32}
+                          className="w-8 h-8 object-cover"
+                        />
                       ) : (
                         <User className="h-4 w-4 text-[#6d381a]" />
                       )}
@@ -215,6 +330,9 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                       }`}
                     >
                       {message.content}
+                      {message.isBot && message.content && (
+                        <span className="inline-block w-0.5 h-4 bg-[#e4b53b] ml-1 animate-pulse"></span>
+                      )}
                       {message.isBot && message.showContactButton && (
                         <div className="mt-3 space-y-2">
                           <Button
@@ -236,26 +354,6 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                 </motion.div>
               ))}
               
-              {isTyping && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex justify-start"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-full bg-[#f1df96]">
-                      <Bot className="h-4 w-4 text-[#e4b53b]" />
-                    </div>
-                    <div className="px-4 py-3 rounded-2xl bg-[#f1df96]/50 border border-[#e4b53b]/20">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-[#e4b53b] rounded-full elevas-typing-indicator"></div>
-                        <div className="w-2 h-2 bg-[#e4b53b] rounded-full elevas-typing-indicator" style={{animationDelay: "0.2s"}}></div>
-                        <div className="w-2 h-2 bg-[#e4b53b] rounded-full elevas-typing-indicator" style={{animationDelay: "0.4s"}}></div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
               
               <div ref={messagesEndRef} />
             </div>
@@ -268,18 +366,17 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Pregúntame sobre nuestros servicios de RRHH... (máx. 300 caracteres)"
                   className="flex-1 text-sm border-[#6d381a]/20 focus:border-[#e4b53b]"
-                  disabled={isTyping}
                   maxLength={300}
                 />
                 <Button
                   type="submit"
-                  disabled={isTyping || !inputValue.trim()}
-                  className="bg-[#e4b53b] hover:bg-[#e4b53b]/90 px-6"
+                  disabled={!inputValue.trim()}
+                  className="bg-[#e4b53b] hover:bg-[#e4b53b]/90 px-6 rounded-xl elevas-press elevas-shadow-sm"
                 >
                   <Send className="h-4 w-4" />
                 </Button>
               </form>
-              <p className="text-xs text-[#6d381a]/60 mt-3 text-center">
+              <p className="text-xs text-[#6d381a]/60 mt-3 text-center elevas-body">
                 Asistente IA especializado en recursos humanos
               </p>
             </div>
@@ -304,12 +401,18 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
               <CardHeader className="border-b border-elevas-neutral-100 bg-gradient-to-r from-elevas-primary-50 to-elevas-accent-50">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 bg-elevas-primary-500 rounded-full">
-                      <Bot className="h-4 w-4 text-white" />
+                    <div className="w-10 h-10 rounded-full overflow-hidden bg-[#e4b53b]/10 border border-[#e4b53b]/30">
+                      <Image
+                        src="/avatar.png"
+                        alt="EVA"
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div>
                       <CardTitle className="text-sm font-medium text-elevas-neutral-800">
-                        Asistente IA Elevas
+                        EVA - Agente IA de Elevas
                       </CardTitle>
                       <p className="text-xs text-elevas-neutral-600">
                         Siempre disponible
@@ -328,7 +431,7 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
               </CardHeader>
               
               <CardContent className="p-0 flex flex-col h-full">
-                <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-64">
+                <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-64" data-chat-container>
                   {messages.map((message) => (
                     <motion.div
                       key={message.id}
@@ -337,9 +440,15 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                       className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
                     >
                       <div className={`flex items-start gap-2 max-w-[80%] ${message.isBot ? 'flex-row' : 'flex-row-reverse'}`}>
-                        <div className={`p-1.5 rounded-full ${message.isBot ? 'bg-elevas-primary-100' : 'bg-elevas-accent-100'}`}>
+                        <div className={`${message.isBot ? 'w-6 h-6 rounded-full overflow-hidden bg-[#e4b53b]/10 border border-[#e4b53b]/30 flex-shrink-0' : 'p-1.5 rounded-full bg-elevas-accent-100 flex-shrink-0'}`}>
                           {message.isBot ? (
-                            <Bot className="h-3 w-3 text-elevas-primary-600" />
+                            <Image
+                              src="/avatar.png"
+                              alt="EVA"
+                              width={24}
+                              height={24}
+                              className="w-6 h-6 object-cover"
+                            />
                           ) : (
                             <User className="h-3 w-3 text-elevas-accent-600" />
                           )}
@@ -352,6 +461,9 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                           }`}
                         >
                           {message.content}
+                          {message.isBot && message.content && (
+                            <span className="inline-block w-0.5 h-3 bg-elevas-primary-500 ml-1 animate-pulse"></span>
+                          )}
                           {message.isBot && message.showContactButton && (
                             <div className="mt-2 space-y-1">
                               <Button
@@ -374,28 +486,7 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                       </div>
                     </motion.div>
                   ))}
-                  
-                  {isTyping && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="flex justify-start"
-                    >
-                      <div className="flex items-start gap-2">
-                        <div className="p-1.5 rounded-full bg-elevas-primary-100">
-                          <Bot className="h-3 w-3 text-elevas-primary-600" />
-                        </div>
-                        <div className="px-3 py-2 rounded-2xl bg-elevas-neutral-100">
-                          <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-elevas-neutral-400 rounded-full elevas-typing-indicator"></div>
-                            <div className="w-2 h-2 bg-elevas-neutral-400 rounded-full elevas-typing-indicator" style={{animationDelay: "0.2s"}}></div>
-                            <div className="w-2 h-2 bg-elevas-neutral-400 rounded-full elevas-typing-indicator" style={{animationDelay: "0.4s"}}></div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                  
+
                   <div ref={messagesEndRef} />
                 </div>
                 
@@ -407,13 +498,12 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="Escribe tu consulta... (máx. 300 caracteres)"
                       className="flex-1 text-sm"
-                      disabled={isTyping}
                       maxLength={300}
                     />
                     <Button
                       type="submit"
                       size="sm"
-                      disabled={isTyping || !inputValue.trim()}
+                      disabled={!inputValue.trim()}
                       className="bg-elevas-primary-500 hover:bg-elevas-primary-600"
                     >
                       <Send className="h-4 w-4" />
@@ -434,9 +524,9 @@ export default function AIChatDemo({ embedded = false }: AIChatDemoProps) {
         >
           <Button
             onClick={() => setIsOpen(!isOpen)}
-            className="h-14 w-14 rounded-full bg-elevas-primary-500 hover:bg-elevas-primary-600 shadow-lg elevas-ai-glow"
+            className="h-14 w-14 rounded-full bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white elevas-lift elevas-press elevas-shadow-lg"
           >
-            <MessageCircle className="h-6 w-6 text-white" />
+            <MessageCircle className="h-6 w-6" />
           </Button>
         </motion.div>
         

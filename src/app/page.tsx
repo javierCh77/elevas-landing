@@ -126,8 +126,8 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-            <span className="block">El futuro del <span className="text-[#e4b53b]">talento</span></span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight elevas-heading elevas-text-balance">
+            <span className="block">El futuro del <span className="text-[#e4b53b] elevas-gradient-text">talento</span></span>
             <span className="block">está aquí</span>
           </h1>
           <div className="text-xl md:text-2xl text-white/90 leading-relaxed font-light max-w-3xl min-h-[100px] flex items-center">
@@ -139,7 +139,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 mt-12 justify-start">
             <Button
               asChild
-              className="bg-[#e4b53b] hover:bg-[#d4a332] text-white shadow-lg font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="bg-[#e4b53b] hover:bg-[#d4a332] text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 text-base sm:text-lg rounded-xl elevas-lift elevas-press elevas-shadow-colored"
             >
               <Link href="/servicios">
                 Explorar servicios <ArrowRight className="ml-2 h-5 w-5" />
@@ -148,7 +148,7 @@ export default function Home() {
             <Button
               asChild
               variant="outline"
-              className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105"
+              className="border-white/30 text-white hover:bg-white/10 elevas-glass font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 text-base sm:text-lg rounded-xl elevas-lift elevas-press"
             >
               <Link href="/contacto">Hablar con un experto</Link>
             </Button>
@@ -156,8 +156,8 @@ export default function Home() {
         </motion.div>
       </section>
       {/* Services Section */}
-      <section className="py-24 bg-white">
-        <div className="px-4 md:px-6 max-w-7xl mx-auto">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="px-4 md:px-6 max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
@@ -165,11 +165,11 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-light text-[#6d381a] mb-3 elevas-slide-up">
+            <h2 className="text-3xl md:text-4xl font-light text-[#6d381a] mb-3 elevas-slide-up elevas-heading elevas-text-balance">
               Servicios <span className="font-normal text-[#e4b53b] elevas-float">inteligentes</span>
             </h2>
-            <div className="w-16 h-px bg-[#e4b53b] mx-auto mb-6 elevas-pulse-soft"></div>
-            <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed">
+            <div className="w-16 h-px bg-[#e4b53b] mx-auto mb-6 elevas-scale-breath"></div>
+            <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed elevas-body elevas-text-balance">
               Soluciones de RRHH diseñadas para la era de la inteligencia artificial,
               donde la tecnología amplifica la sensibilidad humana
             </p>
@@ -205,16 +205,46 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-light text-[#6d381a] mb-3">
-              Chatea con nuestro <span className="font-normal text-[#e4b53b]">asistente IA</span>
+            <h2 className="text-3xl md:text-4xl font-light text-[#6d381a] mb-3 elevas-heading elevas-text-balance">
+              Chatea con <span className="font-normal text-[#e4b53b]">EVA</span>, nuestro agente IA
             </h2>
-            <div className="w-16 h-px bg-[#e4b53b] mx-auto mb-6"></div>
-            <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed">
+            <div className="w-16 h-px bg-[#e4b53b] mx-auto mb-6 elevas-bounce-subtle"></div>
+            <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed elevas-body elevas-text-balance">
               Pregúntale sobre nuestros servicios, metodologías y cómo podemos ayudarte.
               Está disponible 24/7 para resolver tus dudas.
             </p>
           </motion.div>
           <AIChatDemo embedded={true} />
+        </div>
+      </section>
+
+      {/* Careers CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-[#6d381a] to-[#8b5a2b] relative overflow-hidden">
+        <div className="px-4 md:px-6 relative z-10 max-w-4xl mx-auto text-center">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-light text-white leading-tight elevas-heading">
+              ¿Te gustaría <span className="text-[#e4b53b] font-normal">formar parte</span> del equipo?
+            </h2>
+            <p className="text-lg font-light text-white/80 max-w-2xl mx-auto leading-relaxed elevas-body">
+              Únete a nosotros y sé parte de la transformación en recursos humanos con IA
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Button
+                asChild
+                className="bg-[#e4b53b] hover:bg-[#d4a332] text-white font-semibold px-8 py-3 rounded-xl elevas-lift elevas-press elevas-shadow-colored"
+              >
+                <Link href="/careers">
+                  Ver oportunidades <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -238,18 +268,18 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-light text-[#6d381a] leading-tight">
-              ¿Listo para transformar tu 
+            <h2 className="text-3xl md:text-4xl font-light text-[#6d381a] leading-tight elevas-heading elevas-text-balance">
+              ¿Listo para transformar tu
               <span className="text-[#e4b53b] font-normal"> gestión de talento</span>?
             </h2>
-            <div className="w-16 h-px bg-[#e4b53b] mx-auto"></div>
-            <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed">
+            <div className="w-16 h-px bg-[#e4b53b] mx-auto elevas-shimmer" style={{background: 'linear-gradient(90deg, transparent, #e4b53b, transparent)', backgroundSize: '200% 100%'}}></div>
+            <p className="text-lg font-light text-[#6d381a]/70 max-w-2xl mx-auto leading-relaxed elevas-body elevas-text-balance">
               Conversemos sobre cómo la inteligencia artificial puede potenciar
               tus procesos de RRHH manteniendo la esencia humana
             </p>
             <Button
               asChild
-              className="bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white shadow-sm font-normal px-8 py-3 elevas-minimal-lift"
+              className="bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-8 py-3 rounded-xl elevas-lift elevas-press elevas-shadow-md"
             >
               <Link href="/contacto">
                 Iniciar conversación

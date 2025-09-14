@@ -31,6 +31,7 @@ export default function Header() {
     { href: "/", label: "Inicio" },
     { href: "/servicios", label: "Servicios" },
     { href: "/nosotros", label: "Nosotros" },
+    { href: "/careers", label: "Postulate" },
     { href: "/contacto", label: "Contacto" },
   ];
 
@@ -81,7 +82,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Button
             asChild
-            className="hidden md:flex bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            className="hidden md:flex bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-6 py-2.5 rounded-xl elevas-lift elevas-press elevas-shadow-sm"
           >
             <Link href="/contacto">Contáctanos</Link>
           </Button>
@@ -113,7 +114,7 @@ export default function Header() {
                 ))}
                 <Button
                   asChild
-                  className="mt-6 bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+                  className="mt-6 bg-[#e4b53b] hover:bg-[#e4b53b]/90 text-white font-medium px-6 py-3 rounded-xl elevas-lift elevas-press elevas-shadow-sm"
                 >
                   <Link href="/contacto">Contáctanos</Link>
                 </Button>

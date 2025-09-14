@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid gap-8 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-bold mb-6 text-[#e4b53b]">
+            <h3 className="text-2xl font-bold mb-6 text-[#e4b53b] elevas-heading">
               Elevas
             </h3>
             <p className="text-white/80 mb-6 leading-relaxed">
@@ -20,7 +20,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/elevas-consulting-048271360/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-white/10 hover:bg-[#e4b53b] text-white hover:text-[#6d381a] rounded-lg transition-all duration-300"
+                className="p-2 bg-white/10 hover:bg-[#e4b53b] text-white hover:text-[#6d381a] rounded-lg transition-all duration-300 elevas-lift elevas-press"
               >
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://www.instagram.com/elevasconsulting?igsh=amoydTk4cWJpbnM4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-white/10 hover:bg-[#e4b53b] text-white hover:text-[#6d381a] rounded-lg transition-all duration-300"
+                className="p-2 bg-white/10 hover:bg-[#e4b53b] text-white hover:text-[#6d381a] rounded-lg transition-all duration-300 elevas-lift elevas-press"
               >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b]">
+            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b] elevas-heading">
               Servicios
             </h3>
             <ul className="space-y-3">
@@ -87,7 +87,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b]">
+            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b] elevas-heading">
               Empresa
             </h3>
             <ul className="space-y-3">
@@ -97,6 +97,14 @@ export default function Footer() {
                   className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
                 >
                   Sobre Nosotros
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/careers"
+                  className="text-white/80 hover:text-[#e4b53b] transition-colors duration-300"
+                >
+                  Careers
                 </Link>
               </li>
               <li>
@@ -127,7 +135,7 @@ export default function Footer() {
           </div>
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b]">
+            <h3 className="text-lg font-semibold mb-6 text-[#e4b53b] elevas-heading">
               Contacto
             </h3>
             <div className="space-y-4">
